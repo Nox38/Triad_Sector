@@ -1,0 +1,13 @@
+- type: entity
+  parent: [ ClothingBackpack, NFBackpackHiddenStash ]
+  id: TriadClothingBackpackBase
+  components:
+  - type: StorageOpenDoAfter # This component and the one below it are ported from RMC, and give the backpack it's trade off-
+    skipInHand: true # Trying to open its inventory while wearing it forces you to not move and do a doafter, or just take it off your back.
+  - type: StorageCloseOnMove
+    skipInHand: true
+  - type: Storage
+    maxItemSize: Huge
+    defaultStorageOrientation: Vertical
+    grid:
+    - 0,0,6,5

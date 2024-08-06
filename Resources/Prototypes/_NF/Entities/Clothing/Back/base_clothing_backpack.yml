@@ -13,18 +13,18 @@
   - type: AnchorableStorage
 
 - type: entity
-  parent: [ ClothingBackpack, NFBackpackHiddenStash ]
+  parent: TriadClothingBackpackBase # Triad - (Backpack Rework) Changed backpacks to use our version instead.
   id: NFClothingBackpack
-  components:
-  - type: Storage
-    maxItemSize: Large
-    defaultStorageOrientation: Vertical
-    grid:
-    - 0,0,6,3
-  - type: Item
-    size: Huge
-    shape:
-    - 0,0,6,3
+  #components:
+  #- type: Storage
+    #maxItemSize: Large
+    #defaultStorageOrientation: Vertical
+    #grid:
+    #- 0,0,6,3
+  #- type: Item
+    #size: Huge
+    #shape:
+    #- 0,0,6,3
 
 - type: entity
   parent: [ ClothingBackpackDuffel, NFBackpackHiddenStash ]

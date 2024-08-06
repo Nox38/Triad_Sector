@@ -31,9 +31,6 @@
 
 # Clothing
 - type: Tag
-  id: AdvancedTacticalBackpack
-
-- type: Tag
   id: HZDModsuitCore
 
 # Docking. Shuttle-side tags: a berth that sets PriorityDock.requiredShuttleTag to one of these only
