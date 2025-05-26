@@ -1,5 +1,6 @@
 using System.Diagnostics.CodeAnalysis;
 using Content.Shared.Inventory;
+using Content.Shared.Containers;
 using Content.Shared.Weapons.Ranged.Components;
 using Content.Shared.Weapons.Ranged.Events;
 
@@ -18,9 +19,12 @@ public partial class SharedGunSystem
 
     private void OnClothingTakeAmmo(EntityUid uid, ClothingSlotAmmoProviderComponent component, TakeAmmoEvent args)
     {
-        if (!TryGetClothingSlotEntity(uid, component, out var entity))
+        var getConnectedContainerEvent = new GetConnectedContainerEvent();
+        RaiseLocalEvent(uid, ref getConnectedContainerEvent);
+        if(!getConnectedContainerEvent.ContainerEntity.HasValue)
             return;
-        RaiseLocalEvent(entity.Value, args);
+
+        RaiseLocalEvent(getConnectedContainerEvent.ContainerEntity.Value, args);
     }
 
     // Mono
