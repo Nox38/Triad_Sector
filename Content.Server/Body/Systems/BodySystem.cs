@@ -1,10 +1,13 @@
+using System.Numerics;
 using Content.Server.Body.Components;
 using Content.Server.Ghost;
 using Content.Server.Humanoid;
 using Content.Shared._Shitmed.Body.Part;
 using Content.Shared.Body.Components;
+using Content.Shared.Body.Events;
 using Content.Shared.Body.Part;
 using Content.Shared.Body.Systems;
+using Content.Shared.Damage.Components;
 using Content.Shared.Humanoid;
 using Content.Shared.Mind;
 using Content.Shared.Mobs.Systems;
@@ -123,6 +126,9 @@ public sealed partial class BodySystem : SharedBodySystem // Shitmed change: mad
         {
             return new HashSet<EntityUid>();
         }
+
+        if (HasComp<GodmodeComponent>(bodyId))
+            return new HashSet<EntityUid>();
 
         var xform = Transform(bodyId);
         if (xform.MapUid is null)

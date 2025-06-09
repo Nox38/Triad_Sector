@@ -1,16 +1,13 @@
-using Content.Server.Body.Components;
-using Content.Server.Body.Systems;
-using Content.Shared.Chemistry.EntitySystems;
-using Content.Server.Inventory;
-using Content.Server.Nutrition.Components;
-using Content.Shared.Nutrition.Components;
-using Content.Server.Popups;
-using Content.Server.Stack;
+using System.Linq;
 using Content.Shared.Administration.Logs;
 using Content.Shared.Body.Components;
 using Content.Shared.Body.Organ;
+using Content.Shared.Body.Systems;
 using Content.Shared.Chemistry;
+using Content.Shared.Chemistry.EntitySystems;
+using Content.Shared.Containers.ItemSlots;
 using Content.Shared.Database;
+using Content.Shared.Destructible;
 using Content.Shared.DoAfter;
 using Content.Shared.FixedPoint;
 using Content.Shared.Hands.Components;
@@ -21,46 +18,46 @@ using Content.Shared.Interaction.Components;
 using Content.Shared.Interaction.Events;
 using Content.Shared.Inventory;
 using Content.Shared.Mobs.Systems;
-using Content.Shared.Nutrition;
-using Content.Shared.Nutrition.EntitySystems;
+using Content.Shared.Nutrition.Components;
+using Content.Shared.Popups;
 using Content.Shared.Stacks;
 using Content.Shared.Storage;
 using Content.Shared.Verbs;
+using Content.Shared.Whitelist;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Utility;
 using System.Linq;
 using Content.Shared._Mono.Traits.Physical;
 using Content.Shared.Containers.ItemSlots;
-using Robust.Server.GameObjects;
 using Content.Shared.Whitelist;
 using Content.Shared.Destructible;
 
-namespace Content.Server.Nutrition.EntitySystems;
+namespace Content.Shared.Nutrition.EntitySystems;
 
 /// <summary>
 /// Handles feeding attempts both on yourself and on the target.
 /// </summary>
 public sealed partial class FoodSystem : EntitySystem
 {
-    [Dependency] private BodySystem _body = default!;
-    [Dependency] private FlavorProfileSystem _flavorProfile = default!;
-    [Dependency] private ISharedAdminLogManager _adminLogger = default!;
-    [Dependency] private InventorySystem _inventory = default!;
-    [Dependency] private MobStateSystem _mobState = default!;
-    [Dependency] private OpenableSystem _openable = default!;
-    [Dependency] private PopupSystem _popup = default!;
-    [Dependency] private ReactiveSystem _reaction = default!;
-    [Dependency] private SharedAudioSystem _audio = default!;
-    [Dependency] private SharedDoAfterSystem _doAfter = default!;
-    [Dependency] private SharedHandsSystem _hands = default!;
-    [Dependency] private SharedInteractionSystem _interaction = default!;
-    [Dependency] private SharedSolutionContainerSystem _solutionContainer = default!;
-    [Dependency] private TransformSystem _transform = default!;
-    [Dependency] private StackSystem _stack = default!;
-    [Dependency] private StomachSystem _stomach = default!;
-    [Dependency] private UtensilSystem _utensil = default!;
-    [Dependency] private EntityWhitelistSystem _whitelistSystem = default!;
+    [Dependency] private readonly SharedBodySystem _body = default!;
+    [Dependency] private readonly FlavorProfileSystem _flavorProfile = default!;
+    [Dependency] private readonly ISharedAdminLogManager _adminLogger = default!;
+    [Dependency] private readonly InventorySystem _inventory = default!;
+    [Dependency] private readonly MobStateSystem _mobState = default!;
+    [Dependency] private readonly OpenableSystem _openable = default!;
+    [Dependency] private readonly SharedPopupSystem _popup = default!;
+    [Dependency] private readonly ReactiveSystem _reaction = default!;
+    [Dependency] private readonly SharedAudioSystem _audio = default!;
+    [Dependency] private readonly SharedDoAfterSystem _doAfter = default!;
+    [Dependency] private readonly SharedHandsSystem _hands = default!;
+    [Dependency] private readonly SharedInteractionSystem _interaction = default!;
+    [Dependency] private readonly SharedSolutionContainerSystem _solutionContainer = default!;
+    [Dependency] private readonly SharedTransformSystem _transform = default!;
+    [Dependency] private readonly SharedStackSystem _stack = default!;
+    [Dependency] private readonly StomachSystem _stomach = default!;
+    [Dependency] private readonly UtensilSystem _utensil = default!;
+    [Dependency] private readonly EntityWhitelistSystem _whitelistSystem = default!;
 
     public const float MaxFeedDistance = 1.0f;
 
@@ -70,7 +67,7 @@ public sealed partial class FoodSystem : EntitySystem
 
         // TODO add InteractNoHandEvent for entities like mice.
         // run after openable for wrapped/peelable foods
-        SubscribeLocalEvent<FoodComponent, UseInHandEvent>(OnUseFoodInHand, after: new[] { typeof(OpenableSystem), typeof(ServerInventorySystem) });
+        SubscribeLocalEvent<FoodComponent, UseInHandEvent>(OnUseFoodInHand, after: new[] { typeof(OpenableSystem), typeof(InventorySystem) });
         SubscribeLocalEvent<FoodComponent, AfterInteractEvent>(OnFeedFood);
         SubscribeLocalEvent<FoodComponent, GetVerbsEvent<AlternativeVerb>>(AddEatVerb);
         SubscribeLocalEvent<FoodComponent, ConsumeDoAfterEvent>(OnDoAfter);
@@ -136,7 +133,7 @@ public sealed partial class FoodSystem : EntitySystem
         // Check for used storage on the food item
         if (TryComp<StorageComponent>(food, out var storageState) && storageState.Container.ContainedEntities.Any())
         {
-            _popup.PopupEntity(Loc.GetString("food-has-used-storage", ("food", food)), user, user);
+            _popup.PopupClient(Loc.GetString("food-has-used-storage", ("food", food)), user, user);
             return (false, true);
         }
 
@@ -145,7 +142,7 @@ public sealed partial class FoodSystem : EntitySystem
         {
             if (itemSlots.Slots.Any(slot => slot.Value.HasItem))
             {
-                _popup.PopupEntity(Loc.GetString("food-has-used-storage", ("food", food)), user, user);
+                _popup.PopupClient(Loc.GetString("food-has-used-storage", ("food", food)), user, user);
                 return (false, true);
             }
         }
@@ -154,7 +151,7 @@ public sealed partial class FoodSystem : EntitySystem
 
         if (GetUsesRemaining(food, foodComp) <= 0)
         {
-            _popup.PopupEntity(Loc.GetString("food-system-try-use-food-is-empty", ("entity", food)), user, user);
+            _popup.PopupClient(Loc.GetString("food-system-try-use-food-is-empty", ("entity", food)), user, user);
             DeleteAndSpawnTrash(foodComp, food, user);
             return (false, true);
         }
@@ -172,7 +169,7 @@ public sealed partial class FoodSystem : EntitySystem
         if (!_transform.GetMapCoordinates(user).InRange(_transform.GetMapCoordinates(target), MaxFeedDistance))
         {
             var message = Loc.GetString("interaction-system-user-interaction-cannot-reach");
-            _popup.PopupEntity(message, user, user);
+            _popup.PopupClient(message, user, user);
             return (false, true);
         }
 
@@ -180,7 +177,7 @@ public sealed partial class FoodSystem : EntitySystem
         if (forceFeed)
         {
             var userName = Identity.Entity(user, EntityManager);
-            _popup.PopupEntity(Loc.GetString(foodComp.ForceFeedMessage, ("user", userName)), // Frontier - Loc
+            _popup.PopupClient(Loc.GetString(foodComp.ForceFeedMessage, ("user", userName)), // Frontier - Loc
                 user, target);
 
             // logging
@@ -201,7 +198,7 @@ public sealed partial class FoodSystem : EntitySystem
         }
         var doAfterArgs = new DoAfterArgs(EntityManager,
             user,
-            delay,
+            forceFeed ? foodComp.ForceFeedDelay : foodComp.Delay,
             new ConsumeDoAfterEvent(foodComp.Solution, flavors),
             eventTarget: food,
             target: target,
@@ -277,7 +274,7 @@ public sealed partial class FoodSystem : EntitySystem
         if (stomachToUse == null)
         {
             _solutionContainer.TryAddSolution(soln.Value, split);
-            _popup.PopupEntity(forceFeed ? Loc.GetString(entity.Comp.CannotEatAnyMoreOtherMessage) : Loc.GetString(entity.Comp.CannotEatAnyMoreMessage), args.Target.Value, args.User); // Frontier - Loc
+            _popup.PopupClient(forceFeed ? Loc.GetString(entity.Comp.CannotEatAnyMoreOtherMessage) : Loc.GetString(entity.Comp.CannotEatAnyMoreMessage), args.Target.Value, args.User); // Frontier - Loc
             return;
         }
 
@@ -290,22 +287,22 @@ public sealed partial class FoodSystem : EntitySystem
         {
             var targetName = Identity.Entity(args.Target.Value, EntityManager);
             var userName = Identity.Entity(args.User, EntityManager);
-            _popup.PopupEntity(Loc.GetString(entity.Comp.ForceFeedSuccessMessage, ("user", userName), ("flavors", flavors)), args.Target.Value, args.Target.Value); // Frontier: entity.Owner->args.Target.Value
+            _popup.PopupClient(Loc.GetString(entity.Comp.ForceFeedSuccessMessage, ("user", userName), ("flavors", flavors)), args.Target.Value, args.Target.Value); // Frontier: entity.Owner->args.Target.Value
 
-            _popup.PopupEntity(Loc.GetString(entity.Comp.ForceFeedSuccessUserMessage, ("target", targetName)), args.User, args.User);
+            _popup.PopupClient(Loc.GetString(entity.Comp.ForceFeedSuccessUserMessage, ("target", targetName)), args.User, args.User);
 
             // log successful force feed
             _adminLogger.Add(LogType.ForceFeed, LogImpact.Medium, $"{ToPrettyString(entity.Owner):user} forced {ToPrettyString(args.User):target} to eat {ToPrettyString(entity.Owner):food}");
         }
         else
         {
-            _popup.PopupEntity(Loc.GetString(entity.Comp.EatMessage, ("food", entity.Owner), ("flavors", flavors)), args.User, args.User);
+            _popup.PopupClient(Loc.GetString(entity.Comp.EatMessage, ("food", entity.Owner), ("flavors", flavors)), args.User, args.User);
 
             // log successful voluntary eating
             _adminLogger.Add(LogType.Ingestion, LogImpact.Low, $"{ToPrettyString(args.User):target} ate {ToPrettyString(entity.Owner):food}");
         }
 
-        _audio.PlayPvs(entity.Comp.UseSound, args.Target.Value, AudioParams.Default.WithVolume(-1f).WithVariation(0.20f));
+        _audio.PlayPredicted(entity.Comp.UseSound, args.Target.Value, args.User, AudioParams.Default.WithVolume(-1f).WithVariation(0.20f));
 
         // Try to break all used utensils
         foreach (var utensil in utensils)
@@ -346,6 +343,11 @@ public sealed partial class FoodSystem : EntitySystem
         };
         RaiseLocalEvent(food, ev);
         if (ev.Cancelled)
+            return;
+
+        var attemptEv = new DestructionAttemptEvent();
+        RaiseLocalEvent(food, attemptEv);
+        if (attemptEv.Cancelled)
             return;
 
         var afterEvent = new AfterFullyEatenEvent(user);
@@ -450,8 +452,10 @@ public sealed partial class FoodSystem : EntitySystem
             // Check if the food is in the whitelist
             if (_whitelistSystem.IsWhitelistPass(ent.Comp1.SpecialDigestible, food))
                 return true;
-            // They can only eat whitelist food and the food isn't in the whitelist. It's not edible.
-            return false;
+
+            // If their diet is whitelist exclusive, then they cannot eat anything but what follows their whitelisted tags. Else, they can eat their tags AND human food.
+            if (ent.Comp1.IsSpecialDigestibleExclusive)
+                return false;
         }
 
         if (component.RequiresSpecialDigestion)
@@ -491,7 +495,7 @@ public sealed partial class FoodSystem : EntitySystem
         // If "required" field is set, try to block eating without proper utensils used
         if (component.UtensilRequired && (usedTypes & component.Utensil) != component.Utensil)
         {
-            _popup.PopupEntity(Loc.GetString(component.UtensilMessage, ("utensil", component.Utensil ^ usedTypes)), user, user);  // Frontier - Loc
+            _popup.PopupClient(Loc.GetString(component.UtensilMessage, ("utensil", component.Utensil ^ usedTypes)), user, user);  // Frontier - Loc
             return false;
         }
 
@@ -540,7 +544,7 @@ public sealed partial class FoodSystem : EntitySystem
         RaiseLocalEvent(uid, attempt, false);
         if (attempt.Cancelled && attempt.Blocker != null && popupUid != null)
         {
-            _popup.PopupEntity(Loc.GetString("food-system-remove-mask", ("entity", attempt.Blocker.Value)),
+            _popup.PopupClient(Loc.GetString("food-system-remove-mask", ("entity", attempt.Blocker.Value)),
                 uid, popupUid.Value);
         }
 

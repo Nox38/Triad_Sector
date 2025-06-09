@@ -4,15 +4,15 @@ using Content.Server.Body.Components;
 using Content.Shared._Shitmed.Body.Components; // Shitmed Change
 using Content.Shared._Shitmed.Body.Organ; // Shitmed Change
 using Content.Server.Chat.Systems;
-using Content.Server.EntityEffects.EffectConditions;
-using Content.Server.EntityEffects.Effects;
-using Content.Shared.Chemistry.EntitySystems;
+using Content.Server.EntityEffects;
 using Content.Shared.Alert;
 using Content.Shared.Atmos;
 using Content.Shared.Body.Components;
+using Content.Shared.Body.Events;
 using Content.Shared.Body.Prototypes;
 using Content.Shared.Chat;
 using Content.Shared.Chemistry.Components;
+using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Chemistry.Reagent;
 using Content.Shared.Damage;
 using Content.Shared.Database;
@@ -177,6 +177,20 @@ public sealed partial class RespiratorSystem : EntitySystem
     }
 
     /// <summary>
+    /// Returns true if the entity is above their SuffocationThreshold and alive.
+    /// </summary>
+    public bool IsBreathing(Entity<RespiratorComponent?> ent)
+    {
+        if (_mobState.IsIncapacitated(ent))
+            return false;
+
+        if (!Resolve(ent, ref ent.Comp))
+            return false;
+
+        return (ent.Comp.Saturation > ent.Comp.SuffocationThreshold);
+    }
+
+    /// <summary>
     /// Check whether or not an entity can metabolize inhaled air without suffocating or taking damage (i.e., no toxic
     /// gasses).
     /// </summary>
@@ -272,7 +286,7 @@ public sealed partial class RespiratorSystem : EntitySystem
 
             foreach (var cond in effect.Conditions)
             {
-                if (cond is OrganType organ && !organ.Condition(lung, EntityManager))
+                if (cond is OrganType organ && !_entityEffect.OrganCondition(organ, lung))
                     return false;
             }
 
@@ -297,7 +311,7 @@ public sealed partial class RespiratorSystem : EntitySystem
             }
         }
 
-        _damageableSys.TryChangeDamage(ent, HasComp<DebrainedComponent>(ent) ? ent.Comp.Damage * 4.5f : ent.Comp.Damage, interruptsDoAfters: false);
+        _damageableSys.TryChangeDamage(ent, ent.Comp.Damage, interruptsDoAfters: false);
     }
 
     private void StopSuffocation(Entity<RespiratorComponent> ent)
