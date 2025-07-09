@@ -304,7 +304,7 @@ namespace Content.Shared.Chemistry.Components
         /// If you only want the volume of a single reagent, use <see cref="GetReagentQuantity"/>
         /// </summary>
         [Pure]
-        public FixedPoint2 GetTotalPrototypeQuantity(params string[] prototypes)
+        public FixedPoint2 GetTotalPrototypeQuantity(params ProtoId<ReagentPrototype>[] prototypes)
         {
             var total = FixedPoint2.Zero;
             foreach (var (reagent, quantity) in Contents)
@@ -316,7 +316,7 @@ namespace Content.Shared.Chemistry.Components
             return total;
         }
 
-        public FixedPoint2 GetTotalPrototypeQuantity(string id)
+        public FixedPoint2 GetTotalPrototypeQuantity(ProtoId<ReagentPrototype> id)
         {
             var total = FixedPoint2.Zero;
             foreach (var (reagent, quantity) in Contents)
@@ -582,7 +582,40 @@ namespace Content.Shared.Chemistry.Components
         /// <summary>
         /// Splits a solution without the specified reagent prototypes.
         /// </summary>
+        [Obsolete("Use SplitSolutionWithout with params ProtoId<ReagentPrototype>")]
         public Solution SplitSolutionWithout(FixedPoint2 toTake, params string[] excludedPrototypes)
+        {
+            // First remove the blacklisted prototypes
+            List<ReagentQuantity> excluded = new();
+            foreach (var id in excludedPrototypes)
+            {
+                foreach (var tuple in Contents)
+                {
+                    if (tuple.Reagent.Prototype != id)
+                        continue;
+
+                    excluded.Add(tuple);
+                    RemoveReagent(tuple);
+                    break;
+                }
+            }
+
+            // Then split the solution
+            var sol = SplitSolution(toTake);
+
+            // Then re-add the excluded reagents to the original solution.
+            foreach (var reagent in excluded)
+            {
+                AddReagent(reagent);
+            }
+
+            return sol;
+        }
+
+        /// <summary>
+        /// Splits a solution without the specified reagent prototypes.
+        /// </summary>
+        public Solution SplitSolutionWithout(FixedPoint2 toTake, params ProtoId<ReagentPrototype>[] excludedPrototypes)
         {
             // First remove the blacklisted prototypes
             List<ReagentQuantity> excluded = new();
@@ -614,7 +647,7 @@ namespace Content.Shared.Chemistry.Components
         /// <summary>
         /// Splits a solution with only the specified reagent prototypes.
         /// </summary>
-        public Solution SplitSolutionWithOnly(FixedPoint2 toTake, params string[] includedPrototypes)
+        public Solution SplitSolutionWithOnly(FixedPoint2 toTake, params ProtoId<ReagentPrototype>[] includedPrototypes)
         {
             // First remove the non-included prototypes
             List<ReagentQuantity> excluded = new();
@@ -930,7 +963,7 @@ namespace Content.Shared.Chemistry.Components
             ValidateSolution();
         }
 
-        public Color GetColorWithout(IPrototypeManager? protoMan, params string[] without)
+        public Color GetColorWithout(IPrototypeManager? protoMan, params ProtoId<ReagentPrototype>[] without)
         {
             if (Volume == FixedPoint2.Zero)
             {
@@ -973,7 +1006,7 @@ namespace Content.Shared.Chemistry.Components
             return GetColorWithout(protoMan);
         }
 
-        public Color GetColorWithOnly(IPrototypeManager? protoMan, params string[] included)
+        public Color GetColorWithOnly(IPrototypeManager? protoMan, params ProtoId<ReagentPrototype>[] included)
         {
             if (Volume == FixedPoint2.Zero)
             {

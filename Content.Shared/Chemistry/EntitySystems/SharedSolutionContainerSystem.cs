@@ -272,7 +272,7 @@ public abstract partial class SharedSolutionContainerSystem : EntitySystem
     }
 
 
-    public FixedPoint2 GetTotalPrototypeQuantity(EntityUid owner, string reagentId)
+    public FixedPoint2 GetTotalPrototypeQuantity(EntityUid owner, ProtoId<ReagentPrototype> reagentId)
     {
         var reagentQuantity = FixedPoint2.New(0);
         if (EntityManager.EntityExists(owner)
@@ -403,7 +403,21 @@ public abstract partial class SharedSolutionContainerSystem : EntitySystem
     /// <summary>
     /// Splits a solution without the specified reagent(s).
     /// </summary>
+    [Obsolete("Use SplitSolutionWithout with params ProtoId<ReagentPrototype>")]
     public Solution SplitSolutionWithout(Entity<SolutionComponent> soln, FixedPoint2 quantity, params string[] reagents)
+    {
+        var (uid, comp) = soln;
+        var solution = comp.Solution;
+
+        var splitSol = solution.SplitSolutionWithout(quantity, reagents);
+        UpdateChemicals(soln);
+        return splitSol;
+    }
+
+    /// <summary>
+    /// Splits a solution without the specified reagent(s).
+    /// </summary>
+    public Solution SplitSolutionWithout(Entity<SolutionComponent> soln, FixedPoint2 quantity, params ProtoId<ReagentPrototype>[] reagents)
     {
         var (uid, comp) = soln;
         var solution = comp.Solution;
