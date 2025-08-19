@@ -17,8 +17,11 @@ namespace Content.Shared.Fluids;
 public abstract partial class SharedPuddleSystem : EntitySystem
 {
     [Dependency] private IPrototypeManager _prototypeManager = default!;
+    [Dependency] private SharedAppearanceSystem _appearance = default!;
     [Dependency] private SharedSolutionContainerSystem _solutionContainerSystem = default!;
     [Dependency] private SharedDoAfterSystem _doAfterSystem = default!;
+
+    private string[] _standoutReagents = [];
 
     /// <summary>
     /// The lowest threshold to be considered for puddle sprite states as well as slipperiness of a puddle.
@@ -38,7 +41,32 @@ public abstract partial class SharedPuddleSystem : EntitySystem
         SubscribeLocalEvent<PuddleComponent, ExaminedEvent>(HandlePuddleExamined);
         SubscribeLocalEvent<PuddleComponent, TileFireEvent>(OnPuddleBurn);
 
+        SubscribeLocalEvent<PrototypesReloadedEventArgs>(OnPrototypesReloaded);
+
+        CacheStandsout();
         InitializeSpillable();
+    }
+
+    private void OnPrototypesReloaded(PrototypesReloadedEventArgs ev)
+    {
+        if (ev.WasModified<ReagentPrototype>())
+            CacheStandsout();
+    }
+
+    /// <summary>
+    /// Used to cache standout reagents for future use.
+    /// </summary>
+    private void CacheStandsout()
+    {
+        _standoutReagents = [.. _prototypeManager.EnumeratePrototypes<ReagentPrototype>().Where(x => x.Standsout).Select(x => x.ID)];
+    }
+
+    protected virtual void OnSolutionUpdate(Entity<PuddleComponent> entity, ref SolutionContainerChangedEvent args)
+    {
+        if (args.SolutionId != entity.Comp.SolutionName)
+            return;
+
+        UpdateAppearance((entity, entity.Comp));
     }
 
     private void OnRefillableCanDrag(Entity<RefillableSolutionComponent> entity, ref CanDragEvent args)
