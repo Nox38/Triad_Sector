@@ -35,6 +35,7 @@
     solution: beaker
   - type: ExaminableSolution
     solution: beaker
+    exactVolume: true
   - type: DrawableSolution
     solution: beaker
   - type: InjectableSolution
@@ -285,15 +286,15 @@
       injector:
         maxVol: 5
   - type: Injector
-    injectOnly: false
     ignoreMobs: true
     ignoreClosed: false
-    minTransferAmount: 1
-    maxTransferAmount: 5
-    transferAmount: 1
-    toggleState: 1 # draw
+    activeModeProtoId: DropperDrawMode
+    allowedModes:
+    - DropperDrawMode
+    - DropperInjectMode
   - type: ExaminableSolution
     solution: dropper
+    exactVolume: true
   - type: UserInterface
     interfaces:
       enum.TransferAmountUiKey.Key:
@@ -317,10 +318,10 @@
     - Dropper
 
 - type: entity
-  name: borgdropper
   parent: Dropper
-  description: Used to transfer small amounts of chemical solution between containers. Extended for use by medical borgs.
   id: BorgDropper
+  name: hydraulic pipette
+  description: State-of-the-art hydraulic dropper built for cyborgs. It features a higher capacity than hand-powered droppers, able to hold 15 units of liquid.
   components:
   - type: Sprite
     sprite: _DV/Objects/Specific/Chemistry/dropper.rsi # DeltaV - Resprited some medical items
@@ -332,7 +333,7 @@
   - type: SolutionContainerManager
     solutions:
       injector:
-        maxVol: 10
+        maxVol: 15
   - type: Item
     sprite: _DV/Objects/Specific/Chemistry/dropper.rsi # DeltaV - Resprited some medical items
 
@@ -362,9 +363,13 @@
       injector:
         maxVol: 15
   - type: Injector
-    injectOnly: false
+    activeModeProtoId: SyringeDrawMode
+    allowedModes:
+    - SyringeDrawMode
+    - SyringeInjectMode
   - type: ExaminableSolution
     solution: injector
+    exactVolume: true
   - type: Spillable
     solution: injector
   - type: TrashOnSolutionEmpty
@@ -383,9 +388,6 @@
   parent: BaseSyringe
   id: Syringe
   components:
-  - type: Injector
-    transferAmount: 15
-    toggleState: Draw
   - type: Tag
     tags:
     - Syringe
@@ -404,6 +406,10 @@
         map: ["enum.SolutionContainerLayers.Fill"]
         visible: false
       - state: syringeproj
+  - type: SolutionContainerManager
+    solutions:
+      injector:
+        maxVol: 5
   - type: SolutionContainerVisuals
     maxFillLevels: 3
     fillBaseName: minisyringe
@@ -414,12 +420,6 @@
     minimumSpeed: 3
     removalTime: 0.25
     embedOnThrow: false
-  # DeltaV - Nerfs the max volume to 5 (was 15)
-  - type: SolutionContainerManager
-    solutions:
-      injector:
-        maxVol: 5
-  # End DeltaV
   - type: SolutionInjectWhileEmbedded
     transferAmount: 0.5 # Frontier: 1 < 0.5
     solution: injector
@@ -456,16 +456,14 @@
     - Syringe
     - Trash
     - SyringeGunAmmo
-  - type: Injector # Frontier
-    maxTransferAmount: 5 # Frontier
-    transferAmount: 5 # Frontier
 
 - type: entity
+  abstract: true
   parent: BaseSyringe
   id: PrefilledSyringe
   components:
   - type: Injector
-    toggleState: Inject
+    activeModeProtoId: SyringeInjectMode
 
 - type: entity
   id: SyringeBluespace
@@ -488,8 +486,10 @@
       injector:
         maxVol: 100
   - type: Injector
-    delay: 2.5
-    injectOnly: false
+    activeModeProtoId: BluespaceSyringeDrawMode
+    allowedModes:
+    - BluespaceSyringeInjectMode
+    - BluespaceSyringeDrawMode
   - type: SolutionContainerVisuals
     maxFillLevels: 2
     fillBaseName: syringe
@@ -520,15 +520,14 @@
         maxVol: 10
         canReact: false
   - type: Injector
-    injectOnly: false
-    minTransferAmount: 5
-    maxTransferAmount: 10
-    transferAmount: 10
+    activeModeProtoId: CryostasisSyringeDrawMode
+    allowedModes:
+    - CryostasisSyringeInjectMode
+    - CryostasisSyringeDrawMode
   - type: Tag
     tags:
     - Syringe
     - Trash
-
 
 - type: entity
   name: pill

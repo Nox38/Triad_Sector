@@ -717,7 +717,15 @@
   id: HonkerRArm
 
 - type: Tag
+  id: HudSecurity # ConstructionGraph: HudMedSec, GlassesSecHUD
+
+- type: Tag
+  id: Hypospray # ItemMapper: ClothingBeltMedical
+
+- type: Tag
   id: HonkerRLeg
+
+## I ##
 
 - type: Tag
   id: Hotsauce
