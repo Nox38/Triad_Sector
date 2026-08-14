@@ -117,9 +117,9 @@
     damageCoefficient: 0.5
 
 - type: entity
-  parent: ClothingBeltMilitaryWebbing
+  parent: ClothingBeltWebbingsBigBase
   id: ClothingBeltMilitaryWebbingTdf
-  name: TDF chest rig
+  name: TDF large chest rig
   description: A set of tactical webbing worn by TDF members. Very yellow.. or gold.
   components:
   - type: Tag # Ignore Chameleon tags
@@ -141,7 +141,7 @@
     sprite: _Triad/Clothing/Belt/tdfwebbingmed.rsi
   - type: Clothing
     sprite: _Triad/Clothing/Belt/tdfwebbingmed.rsi
-    
+
 - type: entity
   parent: NFClothingBeltStorageBase
   id: MLA79Harness
