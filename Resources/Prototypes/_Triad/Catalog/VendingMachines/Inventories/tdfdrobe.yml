@@ -18,11 +18,11 @@
     ClothingMaskGasSecurity: 15
     ClothingMaskGasSwatTdf: 10
     ClothingShoesBootsCombat: 15
+    ClothingShoesBootsMagSecurity: 3
     ClothingHeadHelmetMercenaryBlack: 20
     ClothingHeadHatBeretTdf: 10
-    ClothingOuterArmorBasicSlim: 15
-    ClothingOuterArmorBasic: 15
-    ClothingShoesBootsMagSecurity: 3
+    ClothingOuterArmorBPVestLight: 15
+    ClothingOuterArmorBPVestMedium: 15
     ClothingEyesGlassesSunglasses: 3
     ClothingEyesHudSecurityTdf: 10
     ClothingEyesHudMedSec: 2
