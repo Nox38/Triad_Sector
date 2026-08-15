@@ -16,6 +16,7 @@
     ClothingNeckIFFOrange: 30
     ClothingHeadsetTdf: 15
     ClothingMaskGasSecurity: 15
+    ClothingMaskGasSwatTdf: 10
     ClothingShoesBootsCombat: 15
     ClothingHeadHelmetMercenaryBlack: 20
     ClothingHeadHatBeretTdf: 10
@@ -25,6 +26,7 @@
     ClothingEyesGlassesSunglasses: 3
     ClothingEyesHudSecurityTdf: 10
     ClothingEyesHudMedSec: 2
+    NFPouchNfsd: 10
     ClothingBeltTdf: 10
     ClothingBeltMilitaryWebbingTdf: 10
     ClothingBeltMilitaryWebbingMedTdf: 3
