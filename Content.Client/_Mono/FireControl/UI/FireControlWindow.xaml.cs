@@ -104,7 +104,7 @@ public sealed partial class FireControlWindow : FancyWindow
             var weaponEntity = kvp.Key;
             var button = kvp.Value;
 
-            if (_weaponTypes.TryGetValue(weaponEntity, out var type) && type == ShipGunType.Impulse)
+            if (_weaponTypes.TryGetValue(weaponEntity, out var type) && type == ShipGunType.Impulse) // Triad (Better Weapon Groups)
             {
                 button.Pressed = true;
             }
@@ -128,7 +128,7 @@ public sealed partial class FireControlWindow : FancyWindow
             var weaponEntity = kvp.Key;
             var button = kvp.Value;
 
-            if (_weaponTypes.TryGetValue(weaponEntity, out var type) && type == ShipGunType.Limited)
+            if (_weaponTypes.TryGetValue(weaponEntity, out var type) && type == ShipGunType.Limited) // Triad (Better Weapon Groups)
             {
                 button.Pressed = true;
             }
@@ -211,9 +211,9 @@ public sealed partial class FireControlWindow : FancyWindow
 
             if (type == ShipGunType.Ballistic)
                 hasBallisticWeapons = true;
-            else if (type == ShipGunType.Impulse)
+            else if (type == ShipGunType.Impulse) // Triad (Better Weapon Groups)
                 hasEnergyWeapons = true;
-            else if (type == ShipGunType.Limited)
+            else if (type == ShipGunType.Limited) // Triad (Better Weapon Groups)
                 hasMissileWeapons = true;
 
             if (hasBallisticWeapons && hasEnergyWeapons && hasMissileWeapons)

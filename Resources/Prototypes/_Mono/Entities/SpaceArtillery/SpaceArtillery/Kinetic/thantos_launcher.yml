@@ -82,8 +82,7 @@
       rotate: true
       bounds: "-3,-3,3,3"
   - type: ShipGunType
-    #shipType: Ballistic Triad - Better Weapon Groups
-    shipType: Limited
+    shipType: Ballistic # Triad - Better Weapon Groups
   - type: ShipGunClass
     shipClass: Superheavy
   - type: ShipRepairable

@@ -50,8 +50,7 @@
     scale: 0.95
     visibleFromOtherGrids: true
   - type: ShipGunType
-    #shipType: Missile Triad - Better Weapon Groups
-    shipType: Limited
+    shipType: Limited # Triad - Better Weapon Groups
   - type: ShipGunClass
     shipClass: Medium
   - type: ShipRepairable

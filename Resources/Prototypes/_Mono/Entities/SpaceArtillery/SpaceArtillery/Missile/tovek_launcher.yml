@@ -43,8 +43,7 @@
     soundInsert:
       path: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
   - type: ShipGunType
-    #shipType: Missile Triad - Better Weapon Groups
-    shipType: Limited
+    shipType: Ballistic, Guided # Triad - Better Weapon Groups
   - type: ShipGunClass
     shipClass: Medium
   - type: ShipRepairable
