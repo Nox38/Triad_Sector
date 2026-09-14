@@ -59,14 +59,14 @@
                 <PanelContainer.PanelOverride>
                     <gfx:StyleBoxFlat BorderThickness="4" BorderColor="#2e2e2e" BackgroundColor="#1c1c1c" />
                 </PanelContainer.PanelOverride>
-            <Button Name="SelectEnergyButton" Access="Public" Text="Impulse"
+            <Button Name="SelectImpulseButton" Access="Public" Text="Impulse"
                     StyleClasses="ButtonSquare" HorizontalExpand="True" Margin="4 4"/>
             </PanelContainer>
             <PanelContainer VerticalExpand="False" HorizontalExpand="True">
                 <PanelContainer.PanelOverride>
                     <gfx:StyleBoxFlat BorderThickness="4" BorderColor="#2e2e2e" BackgroundColor="#1c1c1c" />
                 </PanelContainer.PanelOverride>
-            <Button Name="SelectMissileButton" Access="Public" Text="Limited"
+            <Button Name="SelectLimitedButton" Access="Public" Text="Limited"
                     StyleClasses="ButtonSquare" HorizontalExpand="True" Margin="4 4"/>
             </PanelContainer>
             </BoxContainer>

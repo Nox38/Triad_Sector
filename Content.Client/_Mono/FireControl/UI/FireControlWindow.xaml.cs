@@ -38,8 +38,8 @@ public sealed partial class FireControlWindow : FancyWindow
         SelectAllButton.OnPressed += SelectAllWeapons;
         UnselectAllButton.OnPressed += UnselectAllWeapons;
         SelectBallisticButton.OnPressed += SelectBallisticWeapons;
-        SelectEnergyButton.OnPressed += SelectEnergyWeapons;
-        SelectMissileButton.OnPressed += SelectMissileWeapons;
+        SelectImpulseButton.OnPressed += SelectImpulseWeapons; // Triad - Better Weapon Groups
+        SelectLimitedButton.OnPressed += SelectLimitedWeapons; // Triad - Better Weapon Groups
     }
 
     private void SelectAllWeapons(BaseButton.ButtonEventArgs args)
@@ -90,7 +90,7 @@ public sealed partial class FireControlWindow : FancyWindow
         UpdateAllWeaponButtonTexts();
     }
 
-    private void SelectEnergyWeapons(BaseButton.ButtonEventArgs args)
+    private void SelectImpulseWeapons(BaseButton.ButtonEventArgs args) // Triad - (Better Weapon Groups)
     {
         // First unselect all weapons
         foreach (var button in WeaponsList.Values)
@@ -114,7 +114,7 @@ public sealed partial class FireControlWindow : FancyWindow
         UpdateAllWeaponButtonTexts();
     }
 
-    private void SelectMissileWeapons(BaseButton.ButtonEventArgs args)
+    private void SelectLimitedWeapons(BaseButton.ButtonEventArgs args) // Triad - Better Weapon Groups
     {
         // First unselect all weapons
         foreach (var button in WeaponsList.Values)
@@ -122,7 +122,7 @@ public sealed partial class FireControlWindow : FancyWindow
             button.Pressed = false;
         }
 
-        // Then select only missile weapons
+        // Then select only limited weapons
         foreach (var kvp in WeaponsList)
         {
             var weaponEntity = kvp.Key;
@@ -202,8 +202,8 @@ public sealed partial class FireControlWindow : FancyWindow
 
         // Update the category buttons state based on whether weapons of that type are available
         bool hasBallisticWeapons = false;
-        bool hasEnergyWeapons = false;
-        bool hasMissileWeapons = false;
+        bool hasImpulseWeapons = false; // Triad (Better Weapon Groups)
+        bool hasLimitedWeapons = false; // Triad (Better Weapon Groups)
 
         foreach (var kvp in _weaponTypes)
         {
@@ -212,17 +212,17 @@ public sealed partial class FireControlWindow : FancyWindow
             if (type == ShipGunType.Ballistic)
                 hasBallisticWeapons = true;
             else if (type == ShipGunType.Impulse) // Triad (Better Weapon Groups)
-                hasEnergyWeapons = true;
+                hasImpulseWeapons = true; // Triad (Better Weapon Groups)
             else if (type == ShipGunType.Limited) // Triad (Better Weapon Groups)
-                hasMissileWeapons = true;
+                hasLimitedWeapons = true; // Triad (Better Weapon Groups)
 
-            if (hasBallisticWeapons && hasEnergyWeapons && hasMissileWeapons)
+            if (hasBallisticWeapons && hasImpulseWeapons && hasLimitedWeapons) // Triad (Better Weapon Groups)
                 break;
         }
 
         SelectBallisticButton.Disabled = !hasBallisticWeapons;
-        SelectEnergyButton.Disabled = !hasEnergyWeapons;
-        SelectMissileButton.Disabled = !hasMissileWeapons;
+        SelectImpulseButton.Disabled = !hasImpulseWeapons; // Triad (Better Weapon Groups)
+        SelectLimitedButton.Disabled = !hasLimitedWeapons; // Triad (Better Weapon Groups)
     }
 
     private void UpdateWeaponsList(FireControlConsoleBoundInterfaceState state)
