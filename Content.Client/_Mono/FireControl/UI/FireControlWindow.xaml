@@ -60,14 +60,14 @@
                     <gfx:StyleBoxFlat BorderThickness="4" BorderColor="#2e2e2e" BackgroundColor="#1c1c1c" />
                 </PanelContainer.PanelOverride>
             <Button Name="SelectImpulseButton" Access="Public" Text="Impulse"
-                    StyleClasses="ButtonSquare" HorizontalExpand="True" Margin="4 4"/>
+                    StyleClasses="ButtonSquare" HorizontalExpand="True" Margin="4 4"/><!-- Triad - Better Weapon Groups -->
             </PanelContainer>
             <PanelContainer VerticalExpand="False" HorizontalExpand="True">
                 <PanelContainer.PanelOverride>
                     <gfx:StyleBoxFlat BorderThickness="4" BorderColor="#2e2e2e" BackgroundColor="#1c1c1c" />
                 </PanelContainer.PanelOverride>
             <Button Name="SelectLimitedButton" Access="Public" Text="Limited"
-                    StyleClasses="ButtonSquare" HorizontalExpand="True" Margin="4 4"/>
+                    StyleClasses="ButtonSquare" HorizontalExpand="True" Margin="4 4"/><!-- Triad - Better Weapon Groups -->
             </PanelContainer>
             </BoxContainer>
             </PanelContainer>
