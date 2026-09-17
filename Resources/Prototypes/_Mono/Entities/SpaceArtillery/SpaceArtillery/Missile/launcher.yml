@@ -96,7 +96,7 @@
     radarColor: "#FCBA03"
     scale: 2.75
   - type: ShipGunType
-    shipType: Ballistic # Triad - Better Weapon Groups
+    shipType: Guided # Triad - Better Weapon Groups
   - type: ShipGunClass
     shipClass: Heavy
   - type: ShipRepairable

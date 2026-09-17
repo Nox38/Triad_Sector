@@ -1190,7 +1190,7 @@
     scale: 2
     visibleFromOtherGrids: true
   - type: ShipGunType
-    shipType: Ballistic # Triad - Better Weapon Groups
+    shipType: Impulse # Triad - Better Weapon Groups
   - type: ShipGunClass
     shipClass: Medium
   - type: ShipRepairable
