@@ -23,7 +23,9 @@ public enum ShipGunType
 {
     Ballistic,
     // Triad - Begin (Better Weapon Groups)
+    BallisticLimited,
     Impulse,
-    Guided
+    Guided,
+    GuidedLimited
     // Triad - End
 }

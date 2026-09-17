@@ -39,8 +39,10 @@ public sealed partial class FireControlWindow : FancyWindow
         UnselectAllButton.OnPressed += UnselectAllWeapons;
         SelectBallisticButton.OnPressed += SelectBallisticWeapons;
         // Triad - Begin (Better Weapon Groups)
+        SelectBallisticLimitedButton.OnPressed += SelectBallisticLimitedWeapons;
         SelectImpulseButton.OnPressed += SelectImpulseWeapons;
         SelectGuidedButton.OnPressed += SelectGuidedWeapons;
+        SelectGuidedLimitedButton.OnPressed += SelectGuidedLimitedWeapons;
         // Triad - End
     }
 
@@ -92,7 +94,8 @@ public sealed partial class FireControlWindow : FancyWindow
         UpdateAllWeaponButtonTexts();
     }
 
-    private void SelectImpulseWeapons(BaseButton.ButtonEventArgs args) // Triad - (Better Weapon Groups)
+    // Triad - Begin (Better Weapon Groups)
+    private void SelectBallisticLimitedWeapons(BaseButton.ButtonEventArgs args)
     {
         // First unselect all weapons
         foreach (var button in WeaponsList.Values)
@@ -100,13 +103,13 @@ public sealed partial class FireControlWindow : FancyWindow
             button.Pressed = false;
         }
 
-        // Then select only energy weapons
+        // Then select only ballistic limited weapons
         foreach (var kvp in WeaponsList)
         {
             var weaponEntity = kvp.Key;
             var button = kvp.Value;
 
-            if (_weaponTypes.TryGetValue(weaponEntity, out var type) && type == ShipGunType.Impulse) // Triad (Better Weapon Groups)
+            if (_weaponTypes.TryGetValue(weaponEntity, out var type) && type == ShipGunType.BallisticLimited)
             {
                 button.Pressed = true;
             }
@@ -116,7 +119,31 @@ public sealed partial class FireControlWindow : FancyWindow
         UpdateAllWeaponButtonTexts();
     }
 
-    private void SelectGuidedWeapons(BaseButton.ButtonEventArgs args) // Triad - Better Weapon Groups
+    private void SelectImpulseWeapons(BaseButton.ButtonEventArgs args)
+    {
+        // First unselect all weapons
+        foreach (var button in WeaponsList.Values)
+        {
+            button.Pressed = false;
+        }
+
+        // Then select only impulse weapons
+        foreach (var kvp in WeaponsList)
+        {
+            var weaponEntity = kvp.Key;
+            var button = kvp.Value;
+
+            if (_weaponTypes.TryGetValue(weaponEntity, out var type) && type == ShipGunType.Impulse)
+            {
+                button.Pressed = true;
+            }
+        }
+
+        OnWeaponSelectionChanged?.Invoke();
+        UpdateAllWeaponButtonTexts();
+    }
+
+    private void SelectGuidedWeapons(BaseButton.ButtonEventArgs args)
     {
         // First unselect all weapons
         foreach (var button in WeaponsList.Values)
@@ -130,7 +157,7 @@ public sealed partial class FireControlWindow : FancyWindow
             var weaponEntity = kvp.Key;
             var button = kvp.Value;
 
-            if (_weaponTypes.TryGetValue(weaponEntity, out var type) && type == ShipGunType.Guided) // Triad (Better Weapon Groups)
+            if (_weaponTypes.TryGetValue(weaponEntity, out var type) && type == ShipGunType.Guided)
             {
                 button.Pressed = true;
             }
@@ -139,6 +166,31 @@ public sealed partial class FireControlWindow : FancyWindow
         OnWeaponSelectionChanged?.Invoke();
         UpdateAllWeaponButtonTexts();
     }
+
+    private void SelectGuidedLimitedWeapons(BaseButton.ButtonEventArgs args)
+    {
+        // First unselect all weapons
+        foreach (var button in WeaponsList.Values)
+        {
+            button.Pressed = false;
+        }
+
+        // Then select only guided limited weapons
+        foreach (var kvp in WeaponsList)
+        {
+            var weaponEntity = kvp.Key;
+            var button = kvp.Value;
+
+            if (_weaponTypes.TryGetValue(weaponEntity, out var type) && type == ShipGunType.GuidedLimited)
+            {
+                button.Pressed = true;
+            }
+        }
+
+        OnWeaponSelectionChanged?.Invoke();
+        UpdateAllWeaponButtonTexts();
+    }
+    // Triad - End
 
     /// <summary>
     /// Updates the text of a weapon button based on its selection state and manual reload status.
@@ -205,8 +257,10 @@ public sealed partial class FireControlWindow : FancyWindow
         // Update the category buttons state based on whether weapons of that type are available
         bool hasBallisticWeapons = false;
         // Triad - Begin (Better Weapon Groups)
+        bool hasBallisticLimitedWeapons = false;
         bool hasImpulseWeapons = false;
         bool hasGuidedWeapons = false;
+        bool hasGuidedLimitedWeapons = false;
         // Triad - End
 
         foreach (var kvp in _weaponTypes)
@@ -216,20 +270,26 @@ public sealed partial class FireControlWindow : FancyWindow
             if (type == ShipGunType.Ballistic)
                 hasBallisticWeapons = true;
             // Triad - Begin (Better Weapon Groups)
+            else if (type == ShipGunType.BallisticLimited)
+                hasBallisticLimitedWeapons = true;
             else if (type == ShipGunType.Impulse)
                 hasImpulseWeapons = true;
             else if (type == ShipGunType.Guided)
                 hasGuidedWeapons = true;
-            // Triad - End
+            else if (type == ShipGunType.GuidedLimited)
+                hasGuidedLimitedWeapons = true;
 
-            if (hasBallisticWeapons && hasImpulseWeapons && hasGuidedWeapons) // Triad (Better Weapon Groups)
+            if (hasBallisticWeapons && hasBallisticLimitedWeapons && hasImpulseWeapons && hasGuidedWeapons && hasGuidedLimitedWeapons) // Triad (Better Weapon Groups)
                 break;
+            // Triad - End
         }
 
         SelectBallisticButton.Disabled = !hasBallisticWeapons;
         // Triad - Begin (Better Weapon Groups)
+        SelectBallisticLimitedButton.Disabled = !hasBallisticLimitedWeapons;
         SelectImpulseButton.Disabled = !hasImpulseWeapons;
         SelectGuidedButton.Disabled = !hasGuidedWeapons;
+        SelectGuidedLimitedButton.Disabled = !hasGuidedLimitedWeapons;
         // Triad - End
     }
 
