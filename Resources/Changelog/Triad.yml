@@ -4989,3 +4989,10 @@ Entries:
   id: 2617
   time: '2026-09-22T21:20:09.0000000+00:00'
   url: https://github.com/Triad-Sector/Triad_Sector/pull/654
+- author: Skybailey-dev
+  changes:
+    - type: Fix
+      message: RTG flatpacks no longer called RTG Generator flatpacks.
+  id: 2618
+  time: '2026-09-23T04:33:21.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/657
