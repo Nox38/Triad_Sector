@@ -4996,3 +4996,16 @@ Entries:
   id: 2618
   time: '2026-09-23T04:33:21.0000000+00:00'
   url: https://github.com/Triad-Sector/Triad_Sector/pull/657
+- author: Skybailey-dev
+  changes:
+    - type: Tweak
+      message: >-
+        Minorly tweaked every small mech weapon, making them more inter-balanced
+        with each other.
+    - type: Fix
+      message: >-
+        Fixed every description and some of the names for mech weapons, they now
+        actually describe the weapon, and do not contain false information.
+  id: 2619
+  time: '2026-09-23T19:24:38.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/656
