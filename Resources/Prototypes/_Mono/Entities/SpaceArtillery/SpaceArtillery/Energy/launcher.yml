@@ -65,7 +65,10 @@
     radarColor: "#C92BCC"
     scale: 2
   - type: ShipGunType
-    shipType: Ballistic # Triad - Better Weapon Groups
+    # Triad: Adding new, more specific weapon groups
+    # shipType: Energy
+    shipType: Ballistic
+    # End Triad
   - type: ShipGunClass
     shipClass: Medium
   - type: ShipRepairable
@@ -213,7 +216,10 @@
     scale: 1.5
     visibleFromOtherGrids: true
   - type: ShipGunType
-    shipType: Ballistic # Triad - Better Weapon Groups
+    # Triad: Adding new, more specific weapon groups
+    # shipType: Energy
+    shipType: Ballistic
+    # End Triad
   - type: ShipGunClass
     shipClass: Heavy
   - type: ShipRepairable
@@ -300,7 +306,10 @@
       rotate: true
       bounds: "-0.7,-0.7,0.7,0.7"
   - type: ShipGunType
-    shipType: Ballistic # Triad - Better Weapon Groups
+    # Triad: Adding new, more specific weapon groups
+    # shipType: Energy
+    shipType: Ballistic
+    # End Triad
   - type: ShipGunClass
     shipClass: Superlight
   - type: ShipRepairable
@@ -365,7 +374,10 @@
     scale: 2
     visibleFromOtherGrids: true
   - type: ShipGunType
-    shipType: Ballistic # Triad - Better Weapon Groups
+    # Triad: Adding new, more specific weapon groups
+    # shipType: Energy
+    shipType: Ballistic
+    # End Triad
   - type: ShipGunClass
     shipClass: Medium
   - type: ShipRepairable
@@ -450,7 +462,10 @@
       rotate: true
       bounds: "-1.4,-1.4,1.4,1.4"
   - type: ShipGunType
-    shipType: Ballistic # Triad - Better Weapon Groups
+    # Triad: Adding new, more specific weapon groups
+    # shipType: Energy
+    shipType: Ballistic
+    # End Triad
   - type: ShipGunClass
     shipClass: Heavy
   - type: ShipRepairable
@@ -537,7 +552,10 @@
       rotate: true
       bounds: "-2,-2,2,2"
   - type: ShipGunType
-    shipType: Ballistic # Triad - Better Weapon Groups
+    # Triad: Adding new, more specific weapon groups
+    # shipType: Energy
+    shipType: Ballistic
+    # End Triad
   - type: ShipGunClass
     shipClass: Superheavy
   - type: ShipRepairable
@@ -608,7 +626,10 @@
         sound:
           collection: MetalBreak
   - type: ShipGunType
-    shipType: Impulse # Triad - Better Weapon Groups
+    # Triad: Adding new, more specific weapon groups
+    # shipType: Energy
+    shipType: Impulse
+    # End Triad
   - type: ShipGunClass
     shipClass: Light
   - type: ShipRepairable
@@ -677,7 +698,10 @@
         sound:
           collection: MetalBreak
   - type: ShipGunType
-    shipType: Impulse # Triad - Better Weapon Groups
+    # Triad: Adding new, more specific weapon groups
+    # shipType: Energy
+    shipType: Impulse
+    # End Triad
   - type: ShipGunClass
     shipClass: Heavy
   - type: ShipRepairable
@@ -760,7 +784,10 @@
         layer:
         - MachineLayer
   - type: ShipGunType
-    shipType: Impulse # Triad - Better Weapon Groups
+    # Triad: Adding new, more specific weapon groups
+    # shipType: Energy
+    shipType: Impulse
+    # End Triad
   - type: ShipRepairable
     repairTime: 25
     repairCost: 100
@@ -855,7 +882,10 @@
       rotate: true
       bounds: "-2.5,-2.5,2.5,2.5"
   - type: ShipGunType
-    shipType: Ballistic # Triad - Better Weapon Groups
+    # Triad: Adding new, more specific weapon groups
+    # shipType: Energy
+    shipType: Ballistic
+    # End Triad
   - type: ShipGunClass
     shipClass: Superheavy
   - type: ShipRepairable
@@ -945,7 +975,10 @@
       rotate: true
       bounds: "-1.5,-2.5,1.5,2.5"
   - type: ShipGunType
-    shipType: Impulse # Triad - Better Weapon Groups
+    # Triad: Adding new, more specific weapon groups
+    # shipType: Energy
+    shipType: Impulse
+    # End Triad
   - type: ShipGunClass
     shipClass: Superheavy
   - type: ShipRepairable
@@ -1035,7 +1068,10 @@
       rotate: true
       bounds: "-1.5,-2.5,1.5,2.5"
   - type: ShipGunType
-    shipType: Ballistic # Triad - Better Weapon Groups
+    # Triad: Adding new, more specific weapon groups
+    # shipType: Energy
+    shipType: Ballistic
+    # End Triad
   - type: ShipGunClass
     shipClass: Superheavy
   - type: ShipRepairable
@@ -1112,7 +1148,10 @@
     radarColor: "#ab0707"
     scale: 2.5
   - type: ShipGunType
-    shipType: Ballistic # Triad - Better Weapon Groups
+    # Triad: Adding new, more specific weapon groups
+    # shipType: Energy
+    shipType: Ballistic
+    # End Triad
   - type: ShipGunClass
     shipClass: Heavy
   - type: ShipRepairable
@@ -1190,7 +1229,10 @@
     scale: 2
     visibleFromOtherGrids: true
   - type: ShipGunType
-    shipType: Impulse # Triad - Better Weapon Groups
+    # Triad: Adding new, more specific weapon groups
+    # shipType: Energy
+    shipType: Impulse
+    # End Triad
   - type: ShipGunClass
     shipClass: Medium
   - type: ShipRepairable
@@ -1273,7 +1315,10 @@
     scale: 1.5
     visibleFromOtherGrids: true
   - type: ShipGunType
-    shipType: Ballistic # Triad - Better Weapon Groups
+    # Triad: Adding new, more specific weapon groups
+    # shipType: Energy
+    shipType: Ballistic
+    # End Triad
   - type: ShipGunClass
     shipClass: Heavy
   - type: ShipRepairable

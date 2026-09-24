@@ -55,7 +55,7 @@
             <Button Name="SelectBallisticButton" Access="Public" Text="Ballistics"
                     StyleClasses="ButtonSquare" HorizontalExpand="True" Margin="4 4"/>
                 </PanelContainer>
-            <!-- Triad - Begin (Better Weapon Groups) -->
+            <!-- Triad: Adding new, more specific weapon groups -->
             <PanelContainer VerticalExpand="False" HorizontalExpand="True">
                 <PanelContainer.PanelOverride>
                     <gfx:StyleBoxFlat BorderThickness="4" BorderColor="#2e2e2e" BackgroundColor="#1c1c1c" />
@@ -83,7 +83,7 @@
                 </PanelContainer.PanelOverride>
             <Button Name="SelectGuidedLimitedButton" Access="Public" Text="Guided - Limited"
                     StyleClasses="ButtonSquare" HorizontalExpand="True" Margin="4 4"/>
-            <!-- Triad - End -->
+            <!-- End Triad -->
             </PanelContainer>
             </BoxContainer>
             </PanelContainer>

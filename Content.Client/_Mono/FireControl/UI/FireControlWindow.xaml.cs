@@ -38,7 +38,7 @@ public sealed partial class FireControlWindow : FancyWindow
         SelectAllButton.OnPressed += SelectAllWeapons;
         UnselectAllButton.OnPressed += UnselectAllWeapons;
         SelectBallisticButton.OnPressed += SelectBallisticWeapons;
-        // Triad - Begin (Better Weapon Groups)
+        // Triad: Adding new, more specific weapon groups
         SelectBallisticLimitedButton.OnPressed += SelectBallisticLimitedWeapons;
         SelectImpulseButton.OnPressed += SelectImpulseWeapons;
         SelectGuidedButton.OnPressed += SelectGuidedWeapons;
@@ -94,7 +94,7 @@ public sealed partial class FireControlWindow : FancyWindow
         UpdateAllWeaponButtonTexts();
     }
 
-    // Triad - Begin (Better Weapon Groups)
+    // Triad: Adding new, more specific weapon groups
     private void SelectBallisticLimitedWeapons(BaseButton.ButtonEventArgs args)
     {
         // First unselect all weapons
@@ -190,7 +190,7 @@ public sealed partial class FireControlWindow : FancyWindow
         OnWeaponSelectionChanged?.Invoke();
         UpdateAllWeaponButtonTexts();
     }
-    // Triad - End
+    // End Triad
 
     /// <summary>
     /// Updates the text of a weapon button based on its selection state and manual reload status.
@@ -256,12 +256,12 @@ public sealed partial class FireControlWindow : FancyWindow
 
         // Update the category buttons state based on whether weapons of that type are available
         bool hasBallisticWeapons = false;
-        // Triad - Begin (Better Weapon Groups)
+        // Triad: Adding new, more specific weapon groups
         bool hasBallisticLimitedWeapons = false;
         bool hasImpulseWeapons = false;
         bool hasGuidedWeapons = false;
         bool hasGuidedLimitedWeapons = false;
-        // Triad - End
+        // End Triad
 
         foreach (var kvp in _weaponTypes)
         {
@@ -269,7 +269,7 @@ public sealed partial class FireControlWindow : FancyWindow
 
             if (type == ShipGunType.Ballistic)
                 hasBallisticWeapons = true;
-            // Triad - Begin (Better Weapon Groups)
+            // Triad: Adding new, more specific weapon groups
             else if (type == ShipGunType.BallisticLimited)
                 hasBallisticLimitedWeapons = true;
             else if (type == ShipGunType.Impulse)
@@ -281,16 +281,16 @@ public sealed partial class FireControlWindow : FancyWindow
 
             if (hasBallisticWeapons && hasBallisticLimitedWeapons && hasImpulseWeapons && hasGuidedWeapons && hasGuidedLimitedWeapons) // Triad (Better Weapon Groups)
                 break;
-            // Triad - End
+            // End Triad
         }
 
         SelectBallisticButton.Disabled = !hasBallisticWeapons;
-        // Triad - Begin (Better Weapon Groups)
+        // Triad: Adding new, more specific weapon groups
         SelectBallisticLimitedButton.Disabled = !hasBallisticLimitedWeapons;
         SelectImpulseButton.Disabled = !hasImpulseWeapons;
         SelectGuidedButton.Disabled = !hasGuidedWeapons;
         SelectGuidedLimitedButton.Disabled = !hasGuidedLimitedWeapons;
-        // Triad - End
+        // End Triad
     }
 
     private void UpdateWeaponsList(FireControlConsoleBoundInterfaceState state)
