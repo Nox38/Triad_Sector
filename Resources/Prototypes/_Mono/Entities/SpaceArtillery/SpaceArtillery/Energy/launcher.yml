@@ -141,7 +141,10 @@
     radarColor: "#C92BCC"
     scale: 2.5
   - type: ShipGunType
-    shipType: Ballistic # Triad - Better Weapon Groups
+    # Triad: Adding new, more specific weapon groups
+    # shipType: Energy
+    shipType: Ballistic
+    # End Triad
   - type: ShipGunClass
     shipClass: Heavy
   - type: ShipRepairable
@@ -1392,7 +1395,10 @@
         sound:
           collection: MetalBreak
   - type: ShipGunType
-    shipType: Impulse # Triad - Better Weapon Groups
+    # Triad: Adding new, more specific weapon groups
+    # shipType: Energy
+    shipType: Impulse
+    # End Triad
   - type: ShipGunClass
     shipClass: Light
   - type: ShipRepairable

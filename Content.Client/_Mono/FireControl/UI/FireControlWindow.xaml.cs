@@ -43,7 +43,7 @@ public sealed partial class FireControlWindow : FancyWindow
         SelectImpulseButton.OnPressed += SelectImpulseWeapons;
         SelectGuidedButton.OnPressed += SelectGuidedWeapons;
         SelectGuidedLimitedButton.OnPressed += SelectGuidedLimitedWeapons;
-        // Triad - End
+        // End Triad
     }
 
     private void SelectAllWeapons(BaseButton.ButtonEventArgs args)
