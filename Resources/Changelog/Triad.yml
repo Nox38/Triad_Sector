@@ -5018,3 +5018,16 @@ Entries:
   id: 2620
   time: '2026-09-23T23:24:40.0000000+00:00'
   url: https://github.com/Triad-Sector/Triad_Sector/pull/658
+- author: rebaserHEAD
+  changes:
+    - type: Fix
+      message: >-
+        Anchored artifacts keep their nodes through a ship save, and ones that
+        already lost them come back with a fresh graph.
+    - type: Fix
+      message: Artifacts no longer get stuck mid-unlock.
+    - type: Fix
+      message: Spent artifact nodes stay spent across a ship save.
+  id: 2621
+  time: '2026-09-24T15:31:22.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/659
