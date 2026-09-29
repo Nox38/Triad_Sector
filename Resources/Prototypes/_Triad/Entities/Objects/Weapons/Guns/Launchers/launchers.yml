@@ -25,7 +25,7 @@
       state: all
 
 - type: entity
-  parent: BaseWeaponLauncher # One handed only
+  parent: BaseWeaponLauncher # One-handed only
   id: WeaponLauncherBearsLeg
   name: TDF M-8 Bear's Leg
   description: "The bastard child of a project to make a new standard battle rifle for the fledgling TDF. Surplus Solarian Lecters had their stocks cut off and reused for a new purpose.\nA noob tube in Lecter furniture, just point and shoot."
@@ -54,7 +54,8 @@
     whitelist:
       tags:
         - Grenade
-        - LessLethalGrenade #Triad
+        - LessLethalGrenade
+        - NFTrackingDart
     capacity: 1
     proto: 40mmGrenadeFragmentation
     soundInsert:

@@ -120,7 +120,7 @@ uplink-security-thermobaric-ammo-desc = A magazine containing 5 40mm thermobaric
 uplink-security-frag-ammo-name = 40mm Fragmentation Launcher Grenades
 uplink-security-frag-ammo-desc = A magazine containing 5 40mm fragmentation launcher grenades.
 uplink-security-trackingdart-ammo-name = Tracking Darts
-uplink-security-trackingdart-ammo-desc = A box containing 3 tracking darts and 3 pinpointers. Can be fired from any 40mm grenade launcher.
+uplink-security-trackingdart-ammo-desc = A box containing 3 tracking darts and 3 pinpointers. Can be fired from the Bear's Leg grenade launcher.
 
 uplink-security-spaceblade-sec-name = Security SpaceBlade
 uplink-security-spaceblade-sec-desc = The latest in stun tech.

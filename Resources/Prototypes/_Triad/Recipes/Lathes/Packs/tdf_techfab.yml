@@ -61,6 +61,7 @@
   - WeaponLMGRiotTdf
   - WeaponShotgunDoubleBarreledTdfBastion
   - WeaponShotgunBombadier
+  - WeaponLauncherBearsLegRecipeTdf
 
 - type: latheRecipePack
   id: TDFDynamicVoucher
