@@ -18,9 +18,11 @@
       shader: unshaded
       map: [ "sealed" ]
   - type: Item
-    # Triad: Made modsuits ginormous to match other back storage options.
+    # Triad: Made modsuits ginormous and 4x4 to match other back storage options.
     #size: Huge
     size: Ginormous
+    shape:
+    - 0,0,3,3
     # End Triad
   - type: Clothing
     quickEquip: false
