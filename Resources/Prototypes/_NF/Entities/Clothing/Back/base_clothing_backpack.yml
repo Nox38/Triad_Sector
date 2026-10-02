@@ -42,7 +42,7 @@
     # Triad: Made all backpacks smaller but ginormous so you can store them between rounds easier.
     size: Ginormous
     shape:
-    - 0,0,4,3
+    - 0,0,3,3
     # End Triad
 
 - type: entity

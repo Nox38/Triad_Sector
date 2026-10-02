@@ -238,7 +238,7 @@
   - type: Item
     size: Ginormous
     shape:
-    - 0,0,5,3
+    - 0,0,3,3
   # End Triad
 
 - type: entity
