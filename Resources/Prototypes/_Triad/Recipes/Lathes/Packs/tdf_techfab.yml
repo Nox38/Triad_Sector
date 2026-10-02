@@ -57,7 +57,8 @@
   recipes:
   - WeaponRifleLecterRecipeTdf
   - WeaponSubMachineGunDrozdRecipeTdf
-  - WeaponRifleMR8TRecipeTdf
+  - WeaponRifleBishopRecipeTdf
+  - WeaponRifleCrosshairTDF
   - WeaponLMGRiotTdf
   - WeaponShotgunDoubleBarreledTdfBastion
   - WeaponShotgunBombadier
