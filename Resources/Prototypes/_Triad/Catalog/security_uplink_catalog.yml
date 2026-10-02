@@ -337,23 +337,6 @@
       tags:
       - SecurityUplink
 
-
-- type: listing
-  id: UplinkSecurityEmpGrenadeAmmo
-  name:  uplink-security-emp-ammo-name
-  description: uplink-security-emp-ammo-desc
-  productEntity: BoxEmpGrenadesAmmo
-  icon: { sprite: _Mono/Objects/Weapons/Guns/Ammunition/Explosives/explosives.rsi, state: emp }
-  cost:
-    TriadCommerceCredit: 5
-  categories:
-  - UplinkSecurityAmmo
-  conditions:
-  - !type:StoreWhitelistCondition
-    whitelist:
-      tags:
-      - SecurityUplink
-
 - type: listing
   id: UplinkSecurityTrackingDartsAmmo
   name:  uplink-security-trackingdart-ammo-name
