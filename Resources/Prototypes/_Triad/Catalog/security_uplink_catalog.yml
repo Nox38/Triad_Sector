@@ -393,7 +393,7 @@
   productEntity: Magazine40mmBlast
   icon: { sprite: _Mono/Objects/Weapons/Guns/Ammunition/Explosives/explosives.rsi, state: blast }
   cost:
-    TriadCommerceCredit: 15
+    TriadCommerceCredit: 20
   categories:
   - UplinkSecurityAmmo
   conditions:
@@ -409,7 +409,7 @@
   productEntity: Magazine40mmFrag
   icon: { sprite: _Mono/Objects/Weapons/Guns/Ammunition/Explosives/explosives.rsi, state: frag }
   cost:
-    TriadCommerceCredit: 15
+    TriadCommerceCredit: 20
   categories:
   - UplinkSecurityAmmo
   conditions:
@@ -1265,7 +1265,7 @@
   productEntity: WeaponCaseTDFLongBearsLeg
   icon: { sprite: _Triad/Objects/Weapons/Guns/Launchers/bears_leg.rsi, state: icon }
   cost:
-    TriadCommerceCredit: 20 # Cheap, the lethal ammo is what's expensive.
+    TriadCommerceCredit: 60
   categories:
   - UplinkSecurityWeapons
   conditions:

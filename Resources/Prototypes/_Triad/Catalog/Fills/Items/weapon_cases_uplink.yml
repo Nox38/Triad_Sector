@@ -152,6 +152,8 @@
     contents:
     - id: WeaponLauncherBearsLeg
     - id: 40mmGrenadeFragmentation
-      amount: 2
+      amount: 3
     - id: 40mmGrenadeThermobaric
+      amount: 3
     - id: 40mmGrenadeEMP
+      amount: 3
