@@ -1,7 +1,7 @@
 #they are called *goggles* but count as glasses because.
 
 - type: entity
-  parent: ClothingEyesHudMedical
+  parent: ClothingEyesHudMedical, FlashProtection ]
   id: ClothingEyesBallisticGogglesRed
   name: red ballistic goggles
   description: A pair of ballistic goggles with red lenses and integrated health scanning microchips.

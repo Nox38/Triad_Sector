@@ -208,10 +208,10 @@
   - type: ShowJobIcons
 
 - type: entity
-  parent: ClothingEyesBase
+  parent: [ ClothingEyesBase, ShowSecurityIcons ] # Triad: Redistributed goggle/helmet utilities.
   id: ClothingEyesGlassesMercenary
   name: mercenary glasses
-  description: Glasses made for combat, to protect the eyes from bright blinding flashes.
+  description: Glasses made for combat, to protect the eyes from bright blinding flashes. Upgraded with an integrated security HUD. # Triad
   components:
   - type: Sprite
     sprite: Clothing/Eyes/Glasses/mercglasses.rsi
