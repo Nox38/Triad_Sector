@@ -27,7 +27,7 @@
 - type: entity
   parent: [BaseWeaponLauncher, BaseGunWieldable]
   id: WeaponLauncherBearsLeg
-  name: TDF M-8 Bear's Leg
+  name: TDF MT-12 Bear's Leg
   description: "The bastard child of a project to make a new standard battle rifle for the fledgling TDF. Surplus Solarian Lecters had their stocks cut off and reused for a new purpose.\nA noob tube in Lecter furniture, just point and shoot."
   components:
   - type: Sprite
