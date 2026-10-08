@@ -726,10 +726,10 @@
 
 #ERT Janitor Hardsuit
 - type: entity
-  parent: [ ClothingHeadHelmetHardsuitSyndie, ChemicalHud ] # Triad: Redistributed goggle/helmet utilities.
+  parent: ClothingHeadHelmetHardsuitSyndie
   id: ClothingHeadHelmetHardsuitERTJanitor
   name: ERT janitor hardsuit helmet
-  description: A special hardsuit helmet worn by members of an emergency response team. Comes with a integrated chemical analysis HUD. # Triad
+  description: A special hardsuit helmet worn by members of an emergency response team.
   components:
   - type: Sprite
     sprite: Clothing/Head/Hardsuits/ERThelmets/ertjanitor.rsi
