@@ -376,7 +376,7 @@
   productEntity: Magazine40mmBlast
   icon: { sprite: _Mono/Objects/Weapons/Guns/Ammunition/Explosives/explosives.rsi, state: blast }
   cost:
-    TriadCommerceCredit: 20
+    TriadCommerceCredit: 15
   categories:
   - UplinkSecurityAmmo
   conditions:
