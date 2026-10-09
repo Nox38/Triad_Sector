@@ -145,7 +145,6 @@
   loadouts:
   - TdfLecterLoadout
   - FactionDrozdLoadout
-  - TdfCrosshairLoadout
   - FactionLaserCannonLoadout
   fallbacks:
   - TdfLecterLoadout
