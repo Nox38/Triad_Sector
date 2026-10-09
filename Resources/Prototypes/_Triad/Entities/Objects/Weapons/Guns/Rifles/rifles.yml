@@ -71,6 +71,7 @@
   - type: Clothing
     sprite: _Triad/Objects/Weapons/Guns/Rifles/vigil_inhands_32x.rsi
   - type: Gun
+    fireRate: 5
     cameraRecoilScalar: 0.5 # grip
     angleIncrease: 0.4
 
