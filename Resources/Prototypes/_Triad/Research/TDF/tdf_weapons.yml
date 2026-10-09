@@ -8,7 +8,6 @@
   recipeUnlocks:
   - WeaponRifleLecterRecipeTdf
   - WeaponSubMachineGunDrozdRecipeTdf
-  - WeaponRifleCrosshairTDF
   technologyPrerequisites:
   - UniversalMaterialResearchT1
   position: 12, 2
