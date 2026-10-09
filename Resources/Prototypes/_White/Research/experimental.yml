@@ -9,7 +9,7 @@
   cost: 20000
   recipeUnlocks:
   - ClothingEyesNightVisionGoggles
-  #- ClothingHelmetAttachmentNVGsBasic Triad: These are totally outclassed by the other goggles, so there's no reason to keep them.
+  #- ClothingHelmetAttachmentNVGsBasic Triad:Removed helmet attachment slot, since it's not used by anything.
   technologyPrerequisites:
   - SuperParts
   position: 1, 15
@@ -23,7 +23,7 @@
   cost: 15000
   recipeUnlocks:
   - ClothingEyesThermalVisionGoggles
-  #- ClothingHelmetAttachmentInfraredBasic Triad: These are totally outclassed by the other goggles, so there's no reason to keep them.
+  #- ClothingHelmetAttachmentInfraredBasic Triad:Removed helmet attachment slot, since it's not used by anything.
   technologyPrerequisites:
   - NightVisionTech
   position: 2, 15
