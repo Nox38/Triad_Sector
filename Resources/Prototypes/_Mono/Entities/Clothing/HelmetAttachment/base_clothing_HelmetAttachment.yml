@@ -26,14 +26,3 @@
 #  - type: Sprite
 #    sprite: Markers/cross.rsi
 # End Triad
-
-# Triad Start
-- type: entity
-  parent: ClothingHeadHelmetAttachmentBlock
-  id: NPCHandBlocker
-  name: Blocked
-  description: Can't fit anything there.
-  categories: [ HideSpawnMenu ]
-  components:
-  - type: Unremoveable
-# Triad End
