@@ -1,0 +1,24 @@
+﻿- type: entity
+  parent: BasePlushie
+  id: PlushieProtogen
+  name: protogen plushie
+  description: An adorable stuffed toy that resembles a protogen, cute, fluffy and metallic. Now without sentience!
+  components:
+  - type: Sprite
+    state: plushie_slime
+  - type: EmitSoundOnUse
+    sound:
+      path: /Audio/Voice/Slime/slime_squish.ogg
+  - type: EmitSoundOnLand
+    sound:
+      path: /Audio/Voice/Slime/slime_squish.ogg
+  - type: EmitSoundOnActivate
+    sound:
+      path: /Audio/Voice/Slime/slime_squish.ogg
+  - type: EmitSoundOnTrigger
+    sound:
+      path: /Audio/Voice/Slime/slime_squish.ogg
+  - type: MeleeWeapon
+    wideAnimationRotation: 180
+    soundHit:
+      path: /Audio/Voice/Slime/slime_squish.ogg
