@@ -2,10 +2,11 @@
   parent: BasePlushie
   id: PlushieProtogen
   name: protogen plushie
-  description: An adorable stuffed toy that resembles a protogen, cute, fluffy and metallic. Now without sentience!
+  description: An adorable stuffed toy that resembles a protogen; cute, fluffy and metallic. Now without sentience!
   components:
   - type: Sprite
-    state: plushie_slime
+    sprite: _Triad/Objects/Fun/plushies.rsi
+    state: plushie_protogen
   - type: EmitSoundOnUse
     sound:
       path: /Audio/Items/Toys/toysqueak2.ogg
