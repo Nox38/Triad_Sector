@@ -5285,3 +5285,143 @@ Entries:
   id: 2641
   time: '2026-10-02T03:14:30.0000000+00:00'
   url: https://github.com/Triad-Sector/Triad_Sector/pull/667
+- author: TheRealMasterChief117
+  changes:
+    - type: Add
+      message: Added the countess gown, a new dress available in loadouts!
+  id: 2642
+  time: '2026-10-02T19:16:11.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/688
+- author: Wuffindy
+  changes:
+    - type: Fix
+      message: >-
+        Fixed Heavy-Duty Airlock sprite animation. Its timing has been
+        readjusted and no longer overlaps.
+  id: 2643
+  time: '2026-10-03T17:20:45.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/677
+- author: TheRealMasterChief117
+  changes:
+    - type: Tweak
+      message: >-
+        Spacer loadouts have been massively tweaked, with their major equipment
+        going into organized categories. Hardsuit, armor, and modsuit prices
+        have also been tweaked.
+    - type: Remove
+      message: >-
+        Decommissioned Pilot and Mercenary access. The two accesses have been
+        replaced with a general 'Civilian' access.
+    - type: Remove
+      message: >-
+        Removed Mercenary and Pilot job roles, their gear has been collapsed
+        into Spacer.
+  id: 2644
+  time: '2026-10-03T17:55:49.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/692
+- author: TheRealMasterChief117
+  changes:
+    - type: Add
+      message: >-
+        Added the Linguist trait. It's under the Physical category, allowing you
+        to select 1 extra language at the cost of 4 physical points.
+  id: 2645
+  time: '2026-10-03T19:03:57.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/694
+- author: DDrakov
+  changes:
+    - type: Tweak
+      message: Flash protection is now examinable on items
+  id: 2646
+  time: '2026-10-03T20:00:07.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/647
+- author: DDrakov
+  changes:
+    - type: Add
+      message: Added camera maps
+    - type: Fix
+      message: Fixed the surveillance camera and other camera to function properly
+  id: 2647
+  time: '2026-10-04T00:49:59.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/691
+- author: Wuffindy
+  changes:
+    - type: Tweak
+      message: Concussive Gauntlets cost 2 stamina to wide-swing, not smash
+    - type: Fix
+      message: Concussive Gauntlets now needs to be worn to swing
+  id: 2648
+  time: '2026-10-04T20:53:24.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/695
+- author: TheRealMasterChief117
+  changes:
+    - type: Tweak
+      message: >-
+        Resprited the private security suit entirely to better fit the art
+        style!
+  id: 2649
+  time: '2026-10-04T20:53:45.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/696
+- author: TheRealMasterChief117
+  changes:
+    - type: Add
+      message: >-
+        Added occluders for diagonal walls! This means their shadows will no
+        longer take up a full tile!
+    - type: Fix
+      message: Fixed light occlusion causing weird bugs in 1x1 tile rooms.
+  id: 2650
+  time: '2026-10-06T00:33:30.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/698
+- author: DDrakov
+  changes:
+    - type: Fix
+      message: Fixed safety box withdraw spam.
+    - type: Fix
+      message: Fixed safety deposit boxes not checking item slots.
+  id: 2651
+  time: '2026-10-06T19:36:00.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/700
+- author: BoiWab
+  changes:
+    - type: Add
+      message: Added a ton of new titles for spacers
+  id: 2652
+  time: '2026-10-07T10:17:34.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/704
+- author: BoiWab
+  changes:
+    - type: Add
+      message: Added the Tourists faction
+  id: 2653
+  time: '2026-10-07T10:19:19.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/703
+- author: DDrakov
+  changes:
+    - type: Add
+      message: Added TA-29 to the uplink
+    - type: Add
+      message: Added 4 gauge beanbag to the uplink
+    - type: Remove
+      message: Removed WT Magazine from uplink
+  id: 2654
+  time: '2026-10-07T14:44:54.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/702
+- author: BoiWab
+  changes:
+    - type: Add
+      message: Added variants of combat medkit, matching the types of regular medkit.
+  id: 2655
+  time: '2026-10-08T02:01:55.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/705
+- author: TheRealMasterChief117
+  changes:
+    - type: Tweak
+      message: >-
+        Welding masks now reduce field of vision a bit. Engineering goggles
+        remain unchanged.
+    - type: Tweak
+      message: Welding masks are now toggleable!
+  id: 2656
+  time: '2026-10-08T23:58:12.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/707

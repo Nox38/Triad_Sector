@@ -711,6 +711,7 @@
     state: icon
   - type: Clothing
     sprite: Clothing/Mask/welding-gas.rsi
+  - type: EyeProtection
   # Triad: Redistributed eyewear effects. Welding gas mask is no longer best in slot
   #- type: FlashImmunity
   #- type: EyeProtection
