@@ -5425,3 +5425,42 @@ Entries:
   id: 2656
   time: '2026-10-08T23:58:12.0000000+00:00'
   url: https://github.com/Triad-Sector/Triad_Sector/pull/707
+- author: Nox38
+  changes:
+    - type: Add
+      message: >-
+        CuddlyCritterVends all across the Auric district are now offering a new
+        product: The protogen plushie!
+  id: 2657
+  time: '2026-10-09T23:08:21.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/709
+- author: SleepyCheesehead
+  changes:
+    - type: Add
+      message: TDF ship, Basilisk
+  id: 2658
+  time: '2026-10-10T07:07:05.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/585
+- author: Nox38
+  changes:
+    - type: Add
+      message: >-
+        Added a new lethal grenade launcher for TDF, the Bear's Leg. Its a
+        single shot 40mm. You can craft it or buy it in the uplink.
+    - type: Add
+      message: Added lethal 40mm grenade rounds to the TDF uplink.
+    - type: Fix
+      message: >-
+        Moved 6.8mm large ammo box recipe to materials research 2 to match other
+        large ammo boxes.
+    - type: Fix
+      message: The Bastion shotgun is no longer extremely overpriced materials-wise.
+    - type: Fix
+      message: The TDF sign in sheet is now formatted properly.
+    - type: Add
+      message: Added a Drozd recipe for TDF.
+    - type: Remove
+      message: Removed the redundant TDF Crosshair battle rifle.
+  id: 2659
+  time: '2026-10-11T15:25:05.0000000+00:00'
+  url: https://github.com/Triad-Sector/Triad_Sector/pull/681
