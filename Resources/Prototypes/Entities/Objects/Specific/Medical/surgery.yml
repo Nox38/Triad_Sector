@@ -367,9 +367,9 @@
         Piercing: 10
         Heat: 1
   - type: Cautery
-    speed: 1.5
+    speed: 4 # Triad: Buffed 1.5->4 to give a reason to use it over the multitool
   - type: Drill
-    speed: 1.5
+    speed: 4 # Triad: Buffed 1.5->4 to give a reason to use it over the multitool
   - type: StaticPrice # Mono
     price: 120
 
@@ -400,9 +400,9 @@
         Slash: 10
         Heat: 1
   - type: Scalpel
-    speed: 1.5
+    speed: 4 # Triad: Buffed 1.5->4 to give a reason to use it over the multitool
   - type: BoneSaw
-    speed: 1.5
+    speed: 4 # Triad: Buffed 1.5->4 to give a reason to use it over the multitool
   - type: StaticPrice # Mono
     price: 120
 
@@ -433,13 +433,13 @@
         Slash: 6.5
         Heat: 1
   - type: Hemostat
-    speed: 1.5
+    speed: 4 # Triad: Buffed 1.5->4 to give a reason to use it over the multitool
   - type: Retractor
-    speed: 1.5
+    speed: 4 # Triad: Buffed 1.5->4 to give a reason to use it over the multitool
   - type: Tweezers
-    speed: 1.5
+    speed: 4 # Triad: Buffed 1.5->4 to give a reason to use it over the multitool
   - type: Tending
-    speed: 1.5
+    speed: 4 # Triad: Buffed 1.5->4 to give a reason to use it over the multitool
   - type: StaticPrice # Mono
     price: 120
 
