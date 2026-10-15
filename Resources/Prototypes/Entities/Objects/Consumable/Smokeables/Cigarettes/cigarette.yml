@@ -102,7 +102,7 @@
         reagents:
           - ReagentId: Nicotine
             Quantity: 10
-          - ReagentId: Omnizine
+          - ReagentId: OmnizineTriad # Triad: Replaced old Omnizine with our new version
             Quantity: 10
 
 - type: entity

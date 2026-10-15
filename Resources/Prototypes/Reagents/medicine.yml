@@ -917,12 +917,15 @@
         factor: -1
 
   # Should heal quite literally everything, use in very small amounts
-- type: reagent
+- type: reagent # Triad: Replaced Omnizine with OmnizineTriad, our own version of the chemical in our own namespace, in order to remove the current stockpiles most players have.
   id: Omnizine
   name: reagent-name-omnizine
   group: Medicine
   desc: reagent-desc-omnizine
-  physicalDesc: reagent-physical-desc-soothing
+  # Triad: Change physical description to indicate that this omni is no longer good for anything.
+  #physicalDesc: reagent-physical-desc-soothing
+  physicalDesc: reagent-physical-desc-inert
+  # End Triad
   flavor: medicine
   color: "#fcf7f9"
   metabolisms:
@@ -934,10 +937,13 @@
           min: 0
           max: 100
         damage:
-          Burn: -1.5
-          Toxin: -1.5
-          Airloss: -1.5
-          Brute: -1.5
+          # Triad: Make those old stockpiles of omnizine not work anymore.
+          #Burn: -1.5
+          #Toxin: -1.5
+          #Airloss: -1.5
+          Airloss: -0 # To prevent the prototype from just not loading
+          #Brute: -1.5
+          # End Triad
       - !type:HealthChange # Mono - Added overdose
         conditions:
         - !type:ReagentThreshold

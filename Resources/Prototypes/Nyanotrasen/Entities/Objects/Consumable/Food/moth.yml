@@ -509,7 +509,7 @@
           Quantity: 2
         - ReagentId: Vitamin
           Quantity: 2
-        - ReagentId: Omnizine
+        - ReagentId: OmnizineTriad # Triad: Replaced old Omnizine with our new version
           Quantity: 1
 #Tastes like pasta, cornbread and cheese
 

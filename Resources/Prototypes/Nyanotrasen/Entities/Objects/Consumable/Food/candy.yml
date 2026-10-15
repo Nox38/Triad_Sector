@@ -13,7 +13,7 @@
           Quantity: 3
         - ReagentId: Nutriment
           Quantity: 3
-        - ReagentId: Omnizine
+        - ReagentId: OmnizineTriad # Triad: Replaced old Omnizine with our new version
           Quantity: 3
         - ReagentId: Iron
           Quantity: 3
