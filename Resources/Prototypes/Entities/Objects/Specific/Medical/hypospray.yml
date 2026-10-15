@@ -491,7 +491,7 @@
       pen:
         maxVol: 30
         reagents:
-        - ReagentId: Omnizine
+        - ReagentId: OmnizineTriad # Triad: Replaced old Omnizine with our new version
           Quantity: 25
         - ReagentId: TranexamicAcid
           Quantity: 5
