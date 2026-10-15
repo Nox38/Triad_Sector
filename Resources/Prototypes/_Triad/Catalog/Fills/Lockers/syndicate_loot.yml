@@ -44,7 +44,7 @@
       - !type:AllSelector
         children:
         - id: CigPackSyndicate
-        - id: ChemistryBottleOmnizine
+        #- id: ChemistryBottleOmnizine Triad: Moving Omnizine to the uncommon group
       # Tools
       - !type:GroupSelector
         children:
@@ -79,6 +79,13 @@
           weight: 0.35
       - id: ClothingEyesThermalVisionGogglesSyndie
       - id: ClothingEyesNightVisionGogglesSyndie
+    # Triad: Moved Omnizine from the common group to a new rare group to make it more difficult to find.
+    # Rare Group
+    - !type:GroupSelector
+      weight: 5
+      children:
+      - id: ChemistryBottleOmnizine
+    # End Triad
 
 - type: entityTable
   id: SyndicateBundleLowTierTable

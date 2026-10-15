@@ -84,8 +84,11 @@
         reagents:
           - ReagentId: Nicotine
             Quantity: 10
-          - ReagentId: Omnizine
+          # Triad: Made Omnizine harder to come by to encourage the use of more specialized medicine
+          #- ReagentId: Omnizine
+          - ReagentId: Tricordrazine
             Quantity: 30
+          # End Triad
 
 - type: entity
   id: CigaretteOmnizine
