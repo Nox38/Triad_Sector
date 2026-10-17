@@ -11,6 +11,7 @@ using Content.Shared.Power;
 using Content.Shared.Power.EntitySystems;
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
+using Content.Shared.Damage;
 
 namespace Content.Shared.Bed;
 
