@@ -388,7 +388,7 @@ public sealed partial class InjectorSystem : SharedInjectorSystem
         Solution removedSolution;
         if (injector.Comp.ReagentWhitelist is { } reagentWhitelist)
         {
-            var reagentWhitelistArray = reagentWhitelist.Select(x => x.Id).ToArray();
+            var reagentWhitelistArray = reagentWhitelist.Select(x => x).ToArray();
             removedSolution = applicableTargetSolution.SplitSolutionWithOnly(realTransferAmount, reagentWhitelistArray);
             SolutionContainers.UpdateChemicals(targetSolution);
         }

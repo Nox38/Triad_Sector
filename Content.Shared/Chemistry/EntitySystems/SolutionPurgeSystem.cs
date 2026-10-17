@@ -5,10 +5,10 @@ using Robust.Shared.Timing;
 
 namespace Content.Shared.Chemistry.EntitySystems;
 
-public sealed partial class SolutionPurgeSystem : EntitySystem
+public sealed class SolutionPurgeSystem : EntitySystem
 {
-    [Dependency] private SharedSolutionContainerSystem _solutionContainer = default!;
-    [Dependency] private IGameTiming _timing = default!;
+    [Dependency] private readonly SharedSolutionContainerSystem _solutionContainer = default!;
+    [Dependency] private readonly IGameTiming _timing = default!;
 
     public override void Initialize()
     {
@@ -42,7 +42,7 @@ public sealed partial class SolutionPurgeSystem : EntitySystem
             {
                 _solutionContainer.SplitSolutionWithout(solution.Value,
                     purge.Quantity,
-                    purge.Preserve.Select(proto => proto.Id).ToArray());
+                    purge.Preserve.ToArray());
             }
         }
     }

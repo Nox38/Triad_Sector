@@ -5,8 +5,8 @@ using Content.Shared.Chemistry.Reagent;
 using Content.Shared.FixedPoint;
 using Content.Shared.Fluids.Components;
 using Robust.Shared.Map;
-using System.Linq;
 using Robust.Shared.Prototypes;
+using System.Linq;
 
 namespace Content.Server.Chemistry.TileReactions;
 
@@ -34,8 +34,8 @@ public sealed partial class CleanTileReaction : ITileReaction
     FixedPoint2 ITileReaction.TileReact(TileRef tile,
         ReagentPrototype reagent,
         FixedPoint2 reactVolume,
-        IEntityManager entityManager
-        , List<ReagentData>? data)
+        IEntityManager entityManager,
+        List<ReagentData>? data)
     {
         var entities = entityManager.System<EntityLookupSystem>().GetLocalEntitiesIntersecting(tile, 0f).ToArray();
         var puddleQuery = entityManager.GetEntityQuery<PuddleComponent>();

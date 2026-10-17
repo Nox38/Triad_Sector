@@ -400,19 +400,6 @@ public abstract partial class SharedSolutionContainerSystem : EntitySystem
         return splitSol;
     }
 
-    /// <summary>
-    /// Splits a solution without the specified reagent(s).
-    /// </summary>
-    [Obsolete("Use SplitSolutionWithout with params ProtoId<ReagentPrototype>")]
-    public Solution SplitSolutionWithout(Entity<SolutionComponent> soln, FixedPoint2 quantity, params string[] reagents)
-    {
-        var (uid, comp) = soln;
-        var solution = comp.Solution;
-
-        var splitSol = solution.SplitSolutionWithout(quantity, reagents);
-        UpdateChemicals(soln);
-        return splitSol;
-    }
 
     /// <summary>
     /// Splits a solution without the specified reagent(s).
