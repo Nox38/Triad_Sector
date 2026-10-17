@@ -41,8 +41,7 @@ public sealed class SolutionPurgeSystem : EntitySystem
             if (_solutionContainer.TryGetSolution((uid, manager), purge.Solution, out var solution))
             {
                 _solutionContainer.SplitSolutionWithout(solution.Value,
-                    purge.Quantity,
-                    purge.Preserve.ToArray());
+                    purge.Quantity);
             }
         }
     }

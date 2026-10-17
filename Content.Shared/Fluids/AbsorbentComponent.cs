@@ -2,6 +2,7 @@ using Content.Shared.Audio;
 using Content.Shared.FixedPoint;
 using Robust.Shared.Audio;
 using Robust.Shared.GameStates;
+using Robust.Shared.Prototypes;
 
 namespace Content.Shared.Fluids;
 
@@ -25,6 +26,12 @@ public sealed partial class AbsorbentComponent : Component
     /// </summary>
     [DataField]
     public FixedPoint2 PickupAmount = FixedPoint2.New(100);
+
+    /// <summary>
+    /// The effect spawned when the puddle fully evaporates.
+    /// </summary>
+    [DataField]
+    public EntProtoId MoppedEffect = "PuddleSparkle";
 
     [DataField]
     public SoundSpecifier PickupSound = new SoundPathSpecifier("/Audio/Effects/Fluids/watersplash.ogg")

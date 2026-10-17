@@ -24,6 +24,14 @@ public abstract class SharedDestructibleSystem : EntitySystem
 }
 
 /// <summary>
+/// Raised before an entity is about to be destroyed and deleted
+/// </summary>
+public sealed class DestructionAttemptEvent : CancellableEntityEventArgs
+{
+
+}
+
+/// <summary>
 ///     Raised when entity is destroyed and about to be deleted.
 /// </summary>
 public sealed class DestructionEventArgs : EntityEventArgs
