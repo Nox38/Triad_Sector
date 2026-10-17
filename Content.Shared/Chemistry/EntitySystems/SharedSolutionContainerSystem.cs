@@ -344,6 +344,15 @@ public abstract partial class SharedSolutionContainerSystem : EntitySystem
         if (solution.GetPrimaryReagentId() is { } reagent)
             AppearanceSystem.SetData(uid, SolutionContainerVisuals.BaseOverride, reagent.ToString(), appearanceComponent);
     }
+    // Monolith forgot to comment this, but this is... from them?
+    public void BurnFlammableReagents(Entity<SolutionComponent> soln, float fraction)
+    {
+        var (uid, comp) = soln;
+        var solution = comp.Solution;
+
+        solution.BurnFlammableReagents(fraction, PrototypeManager);
+        UpdateChemicals(soln);
+    }
 
     /// <summary>
     ///     Removes part of the solution in the container.
