@@ -17,10 +17,12 @@ public record struct GetMetabolicMultiplierEvent()
 /// Note that you should be storing this value as to not accrue precision errors when it's modified.
 /// </summary>
 [ByRefEvent]
-public readonly record struct ApplyMetabolicMultiplierEvent(float Multiplier)
+public readonly record struct ApplyMetabolicMultiplierEvent(float Multiplier, bool Apply)
 {
     /// <summary>
     /// What the metabolism's update rate will be multiplied by.
     /// </summary>
     public readonly float Multiplier = Multiplier;
+
+    public readonly bool Apply = Apply;
 }

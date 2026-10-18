@@ -14,7 +14,7 @@ public abstract class SharedMetabolizerSystem : EntitySystem
         var getEv = new GetMetabolicMultiplierEvent();
         RaiseLocalEvent(uid, ref getEv);
 
-        var applyEv = new ApplyMetabolicMultiplierEvent(getEv.Multiplier);
+        var applyEv = new ApplyMetabolicMultiplierEvent(getEv.Multiplier, false);
         RaiseLocalEvent(uid, ref applyEv);
     }
 }

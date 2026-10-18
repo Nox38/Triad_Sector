@@ -1,4 +1,5 @@
 using Content.Server.Body.Components;
+using Content.Shared.Body.Components;
 using Content.Shared.Implants.Components;
 using Content.Shared.Storage;
 using Robust.Shared.Containers;

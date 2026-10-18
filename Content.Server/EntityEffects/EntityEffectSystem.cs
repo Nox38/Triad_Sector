@@ -24,6 +24,7 @@ using Content.Server.Traits.Assorted;
 using Content.Server.Zombies;
 using Content.Shared.Atmos;
 using Content.Shared.Audio;
+using Content.Shared.Chat;
 using Content.Shared.Coordinates.Helpers;
 using Content.Shared.EntityEffects.EffectConditions;
 using Content.Shared.EntityEffects.Effects.PlantMetabolism;
@@ -57,7 +58,7 @@ public sealed class EntityEffectSystem : EntitySystem
     [Dependency] private readonly ExplosionSystem _explosion = default!;
     [Dependency] private readonly FlammableSystem _flammable = default!;
     [Dependency] private readonly FlashSystem _flash = default!;
-    [Dependency] private readonly IMapManager _mapManager = default!;
+    [Dependency] private readonly MapSystem _mapManager = default!;
     [Dependency] private readonly IPrototypeManager _protoManager = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly SharedMapSystem _map = default!;
@@ -74,6 +75,7 @@ public sealed class EntityEffectSystem : EntitySystem
     [Dependency] private readonly TemperatureSystem _temperature = default!;
     [Dependency] private readonly SharedTransformSystem _xform = default!;
     [Dependency] private readonly VomitSystem _vomit = default!;
+    [Dependency] private TurfSystem _turf = default!;
 
     public override void Initialize()
     {
@@ -516,7 +518,8 @@ public sealed class EntityEffectSystem : EntitySystem
             if (reagentArgs.Source == null)
                 return;
 
-            var spreadAmount = (int) Math.Max(0, Math.Ceiling((reagentArgs.Quantity / args.Effect.OverflowThreshold).Float()));
+            var spreadAmount = (int)Math.Max(0,
+                Math.Ceiling((reagentArgs.Quantity / args.Effect.OverflowThreshold).Float()));
             var splitSolution = reagentArgs.Source.SplitSolution(reagentArgs.Source.Volume);
             var transform = EntityManager.GetComponent<TransformComponent>(reagentArgs.TargetEntity);
             var mapCoords = _xform.GetMapCoordinates(reagentArgs.TargetEntity, xform: transform);
@@ -527,8 +530,10 @@ public sealed class EntityEffectSystem : EntitySystem
                 return;
             }
 
-            if (_spreader.RequiresFloorToSpread(args.Effect.PrototypeId) && tileRef.Tile.IsSpace())
+            if (_turf.IsSpace(tileRef))
+            {
                 return;
+            }
 
             var coords = _map.MapToGrid(gridUid, mapCoords);
             var ent = EntityManager.SpawnEntity(args.Effect.PrototypeId, coords.SnapToGrid());
@@ -630,9 +635,6 @@ public sealed class EntityEffectSystem : EntitySystem
 
     private void OnExecuteEmote(ref ExecuteEntityEffectEvent<Emote> args)
     {
-        if (args.Effect.EmoteId == null)
-            return;
-
         if (args.Effect.ShowInChat)
             _chat.TryEmoteWithChat(args.Args.TargetEntity, args.Effect.EmoteId, ChatTransmitRange.GhostRangeLimit, forceEmote: args.Effect.Force);
         else
