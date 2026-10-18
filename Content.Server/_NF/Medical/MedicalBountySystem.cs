@@ -24,6 +24,7 @@ using Robust.Shared.Containers;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Content.Server._NF.Traits.Assorted;
+using Content.Shared.Body.Components;
 
 namespace Content.Server._NF.Medical;
 

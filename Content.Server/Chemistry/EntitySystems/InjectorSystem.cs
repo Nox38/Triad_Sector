@@ -15,7 +15,8 @@ using Content.Shared.Interaction;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Stacks;
 using Content.Shared.Nutrition.EntitySystems;
-using System.Linq; // Frontier
+using System.Linq;
+using Content.Shared.Body.Components; // Frontier
 
 namespace Content.Server.Chemistry.EntitySystems;
 

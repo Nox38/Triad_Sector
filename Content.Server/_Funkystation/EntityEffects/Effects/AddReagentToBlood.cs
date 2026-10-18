@@ -1,6 +1,7 @@
 using Content.Server.Body.Components;
 using Content.Shared.Chemistry.Reagent;
 using Content.Server.Body.Systems;
+using Content.Shared.Body.Components;
 using Content.Shared.EntityEffects;
 using Content.Shared.FixedPoint;
 using Robust.Shared.Prototypes;

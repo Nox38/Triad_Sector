@@ -14,6 +14,7 @@ using Content.Shared.Timing;
 using Content.Shared.Weapons.Melee.Events;
 using Content.Server.Body.Components;
 using System.Linq;
+using Content.Shared.Body.Components;
 using Robust.Server.Audio;
 using Content.Shared.DoAfter; // Frontier
 

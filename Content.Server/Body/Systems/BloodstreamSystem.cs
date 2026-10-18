@@ -45,30 +45,30 @@ public sealed class BloodstreamSystem : EntitySystem
     {
         base.Initialize();
 
-        SubscribeLocalEvent<Components.BloodstreamComponent, ComponentInit>(OnComponentInit);
-        SubscribeLocalEvent<Components.BloodstreamComponent, MapInitEvent>(OnMapInit);
-        SubscribeLocalEvent<Components.BloodstreamComponent, EntityUnpausedEvent>(OnUnpaused);
-        SubscribeLocalEvent<Components.BloodstreamComponent, DamageChangedEvent>(OnDamageChanged);
-        SubscribeLocalEvent<Components.BloodstreamComponent, HealthBeingExaminedEvent>(OnHealthBeingExamined);
-        SubscribeLocalEvent<Components.BloodstreamComponent, BeingGibbedEvent>(OnBeingGibbed);
-        SubscribeLocalEvent<Components.BloodstreamComponent, ApplyMetabolicMultiplierEvent>(OnApplyMetabolicMultiplier);
-        SubscribeLocalEvent<Components.BloodstreamComponent, ReactionAttemptEvent>(OnReactionAttempt);
-        SubscribeLocalEvent<Components.BloodstreamComponent, SolutionRelayEvent<ReactionAttemptEvent>>(OnReactionAttempt);
-        SubscribeLocalEvent<Components.BloodstreamComponent, RejuvenateEvent>(OnRejuvenate);
-        SubscribeLocalEvent<Components.BloodstreamComponent, GenerateDnaEvent>(OnDnaGenerated);
+        SubscribeLocalEvent<BloodstreamComponent, ComponentInit>(OnComponentInit);
+        SubscribeLocalEvent<BloodstreamComponent, MapInitEvent>(OnMapInit);
+        SubscribeLocalEvent<BloodstreamComponent, EntityUnpausedEvent>(OnUnpaused);
+        SubscribeLocalEvent<BloodstreamComponent, DamageChangedEvent>(OnDamageChanged);
+        SubscribeLocalEvent<BloodstreamComponent, HealthBeingExaminedEvent>(OnHealthBeingExamined);
+        SubscribeLocalEvent<BloodstreamComponent, BeingGibbedEvent>(OnBeingGibbed);
+        SubscribeLocalEvent<BloodstreamComponent, ApplyMetabolicMultiplierEvent>(OnApplyMetabolicMultiplier);
+        SubscribeLocalEvent<BloodstreamComponent, ReactionAttemptEvent>(OnReactionAttempt);
+        SubscribeLocalEvent<BloodstreamComponent, SolutionRelayEvent<ReactionAttemptEvent>>(OnReactionAttempt);
+        SubscribeLocalEvent<BloodstreamComponent, RejuvenateEvent>(OnRejuvenate);
+        SubscribeLocalEvent<BloodstreamComponent, GenerateDnaEvent>(OnDnaGenerated);
     }
 
-    private void OnMapInit(Entity<Components.BloodstreamComponent> ent, ref MapInitEvent args)
+    private void OnMapInit(Entity<BloodstreamComponent> ent, ref MapInitEvent args)
     {
         ent.Comp.NextUpdate = _gameTiming.CurTime + ent.Comp.UpdateInterval;
     }
 
-    private void OnUnpaused(Entity<Components.BloodstreamComponent> ent, ref EntityUnpausedEvent args)
+    private void OnUnpaused(Entity<BloodstreamComponent> ent, ref EntityUnpausedEvent args)
     {
         ent.Comp.NextUpdate += args.PausedTime;
     }
 
-    private void OnReactionAttempt(Entity<Components.BloodstreamComponent> entity, ref ReactionAttemptEvent args)
+    private void OnReactionAttempt(Entity<BloodstreamComponent> entity, ref ReactionAttemptEvent args)
     {
         if (args.Cancelled)
             return;
@@ -93,7 +93,7 @@ public sealed class BloodstreamSystem : EntitySystem
         // Having cheese-clots form in your veins can't be good for you.
     }
 
-    private void OnReactionAttempt(Entity<Components.BloodstreamComponent> entity, ref SolutionRelayEvent<ReactionAttemptEvent> args)
+    private void OnReactionAttempt(Entity<BloodstreamComponent> entity, ref SolutionRelayEvent<ReactionAttemptEvent> args)
     {
         if (args.Name != entity.Comp.BloodSolutionName
             && args.Name != entity.Comp.ChemicalSolutionName
@@ -109,7 +109,7 @@ public sealed class BloodstreamSystem : EntitySystem
     {
         base.Update(frameTime);
 
-        var query = EntityQueryEnumerator<Components.BloodstreamComponent>();
+        var query = EntityQueryEnumerator<BloodstreamComponent>();
         while (query.MoveNext(out var uid, out var bloodstream))
         {
             if (_gameTiming.CurTime < bloodstream.NextUpdate)
@@ -175,7 +175,7 @@ public sealed class BloodstreamSystem : EntitySystem
         }
     }
 
-    private void OnComponentInit(Entity<Components.BloodstreamComponent> entity, ref ComponentInit args)
+    private void OnComponentInit(Entity<BloodstreamComponent> entity, ref ComponentInit args)
     {
         if (!_solutionContainerSystem.EnsureSolution(entity.Owner,
                 entity.Comp.ChemicalSolutionName,
@@ -197,7 +197,7 @@ public sealed class BloodstreamSystem : EntitySystem
         bloodSolution.AddReagent(new ReagentId(entity.Comp.BloodReagent, GetEntityBloodData(entity.Owner)), entity.Comp.BloodMaxVolume - bloodSolution.Volume);
     }
 
-    private void OnDamageChanged(Entity<Components.BloodstreamComponent> ent, ref DamageChangedEvent args)
+    private void OnDamageChanged(Entity<BloodstreamComponent> ent, ref DamageChangedEvent args)
     {
         if (args.DamageDelta is null || !args.DamageIncreased)
         {
@@ -246,7 +246,7 @@ public sealed class BloodstreamSystem : EntitySystem
     /// <summary>
     ///     Shows text on health examine, based on bleed rate and blood level.
     /// </summary>
-    private void OnHealthBeingExamined(Entity<Components.BloodstreamComponent> ent, ref HealthBeingExaminedEvent args)
+    private void OnHealthBeingExamined(Entity<BloodstreamComponent> ent, ref HealthBeingExaminedEvent args)
     {
         // Shows profusely bleeding at half the max bleed rate.
         if (ent.Comp.BleedAmount > ent.Comp.MaxBleedAmount / 2)
@@ -269,13 +269,13 @@ public sealed class BloodstreamSystem : EntitySystem
         }
     }
 
-    private void OnBeingGibbed(Entity<Components.BloodstreamComponent> ent, ref BeingGibbedEvent args)
+    private void OnBeingGibbed(Entity<BloodstreamComponent> ent, ref BeingGibbedEvent args)
     {
         SpillAllSolutions(ent, ent);
     }
 
     private void OnApplyMetabolicMultiplier(
-        Entity<Components.BloodstreamComponent> ent,
+        Entity<BloodstreamComponent> ent,
         ref ApplyMetabolicMultiplierEvent args)
     {
         // TODO REFACTOR THIS
@@ -289,7 +289,7 @@ public sealed class BloodstreamSystem : EntitySystem
         ent.Comp.UpdateInterval /= args.Multiplier;
     }
 
-    private void OnRejuvenate(Entity<Components.BloodstreamComponent> entity, ref RejuvenateEvent args)
+    private void OnRejuvenate(Entity<BloodstreamComponent> entity, ref RejuvenateEvent args)
     {
         TryModifyBleedAmount(entity.Owner, -entity.Comp.BleedAmount, entity.Comp);
 
@@ -303,14 +303,14 @@ public sealed class BloodstreamSystem : EntitySystem
     /// <summary>
     ///     Attempt to transfer provided solution to internal solution.
     /// </summary>
-    public bool TryAddToChemicals(EntityUid uid, Solution solution, Components.BloodstreamComponent? component = null)
+    public bool TryAddToChemicals(EntityUid uid, Solution solution, BloodstreamComponent? component = null)
     {
         return Resolve(uid, ref component, logMissing: false)
             && _solutionContainerSystem.ResolveSolution(uid, component.ChemicalSolutionName, ref component.ChemicalSolution)
             && _solutionContainerSystem.TryAddSolution(component.ChemicalSolution.Value, solution);
     }
 
-    public bool FlushChemicals(EntityUid uid, string excludedReagentID, FixedPoint2 quantity, Components.BloodstreamComponent? component = null)
+    public bool FlushChemicals(EntityUid uid, string excludedReagentID, FixedPoint2 quantity, BloodstreamComponent? component = null)
     {
         if (!Resolve(uid, ref component, logMissing: false)
             || !_solutionContainerSystem.ResolveSolution(uid, component.ChemicalSolutionName, ref component.ChemicalSolution, out var chemSolution))
@@ -328,7 +328,7 @@ public sealed class BloodstreamSystem : EntitySystem
         return true;
     }
 
-    public float GetBloodLevelPercentage(EntityUid uid, Components.BloodstreamComponent? component = null)
+    public float GetBloodLevelPercentage(EntityUid uid, BloodstreamComponent? component = null)
     {
         if (!Resolve(uid, ref component)
             || !_solutionContainerSystem.ResolveSolution(uid, component.BloodSolutionName, ref component.BloodSolution, out var bloodSolution))
@@ -339,7 +339,7 @@ public sealed class BloodstreamSystem : EntitySystem
         return bloodSolution.FillFraction;
     }
 
-    public void SetBloodLossThreshold(EntityUid uid, float threshold, Components.BloodstreamComponent? comp = null)
+    public void SetBloodLossThreshold(EntityUid uid, float threshold, BloodstreamComponent? comp = null)
     {
         if (!Resolve(uid, ref comp))
             return;
@@ -350,7 +350,7 @@ public sealed class BloodstreamSystem : EntitySystem
     /// <summary>
     ///     Attempts to modify the blood level of this entity directly.
     /// </summary>
-    public bool TryModifyBloodLevel(EntityUid uid, FixedPoint2 amount, Components.BloodstreamComponent? component = null)
+    public bool TryModifyBloodLevel(EntityUid uid, FixedPoint2 amount, BloodstreamComponent? component = null)
     {
         if (!Resolve(uid, ref component, logMissing: false)
             || !_solutionContainerSystem.ResolveSolution(uid, component.BloodSolutionName, ref component.BloodSolution))
@@ -393,7 +393,7 @@ public sealed class BloodstreamSystem : EntitySystem
     /// <summary>
     ///     Tries to make an entity bleed more or less
     /// </summary>
-    public bool TryModifyBleedAmount(EntityUid uid, float amount, Components.BloodstreamComponent? component = null)
+    public bool TryModifyBleedAmount(EntityUid uid, float amount, BloodstreamComponent? component = null)
     {
         if (!Resolve(uid, ref component, logMissing: false))
             return false;
@@ -415,7 +415,7 @@ public sealed class BloodstreamSystem : EntitySystem
     /// <summary>
     ///     BLOOD FOR THE BLOOD GOD
     /// </summary>
-    public void SpillAllSolutions(EntityUid uid, Components.BloodstreamComponent? component = null)
+    public void SpillAllSolutions(EntityUid uid, BloodstreamComponent? component = null)
     {
         if (!Resolve(uid, ref component))
             return;
@@ -449,7 +449,7 @@ public sealed class BloodstreamSystem : EntitySystem
     /// <summary>
     ///     Change what someone's blood is made of, on the fly.
     /// </summary>
-    public void ChangeBloodReagent(EntityUid uid, string reagent, Components.BloodstreamComponent? component = null)
+    public void ChangeBloodReagent(EntityUid uid, string reagent, BloodstreamComponent? component = null)
     {
         if (!Resolve(uid, ref component, logMissing: false)
             || reagent == component.BloodReagent)
@@ -471,7 +471,7 @@ public sealed class BloodstreamSystem : EntitySystem
             _solutionContainerSystem.TryAddReagent(component.BloodSolution.Value, component.BloodReagent, currentVolume, null, GetEntityBloodData(uid));
     }
 
-    private void OnDnaGenerated(Entity<Components.BloodstreamComponent> entity, ref GenerateDnaEvent args)
+    private void OnDnaGenerated(Entity<BloodstreamComponent> entity, ref GenerateDnaEvent args)
     {
         if (_solutionContainerSystem.ResolveSolution(entity.Owner, entity.Comp.BloodSolutionName, ref entity.Comp.BloodSolution, out var bloodSolution))
         {

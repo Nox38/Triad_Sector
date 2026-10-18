@@ -25,6 +25,7 @@ using Content.Shared.Body.Part;
 using Content.Shared.Body.Systems;
 using Content.Shared._Shitmed.Targeting;
 using System.Linq;
+using Content.Shared.Body.Components;
 
 namespace Content.Server.Medical;
 

@@ -1,4 +1,5 @@
 using Content.Server.Body.Components;
+using Content.Shared.Body.Components;
 using Content.Shared.Chemistry.Reagent;
 using Content.Shared.EntityEffects;
 using Content.Shared.FixedPoint;
@@ -19,7 +20,7 @@ public sealed partial class BloodReagentThreshold : EntityEffectCondition
     public ProtoId<ReagentPrototype>? Reagent = null;
     public override bool Condition(EntityEffectBaseArgs args)
     {
-        if (Reagent is null) 
+        if (Reagent is null)
 			return true;
 
 		if (!args.EntityManager.TryGetComponent<BloodstreamComponent>(args.TargetEntity, out var blood))
