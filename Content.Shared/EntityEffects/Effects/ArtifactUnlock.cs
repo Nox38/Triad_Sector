@@ -26,15 +26,6 @@ public sealed partial class ArtifactUnlock : EntityEffect
             xenoArtifactSys.TriggerXenoArtifact((args.TargetEntity, xenoArtifact), null, force: true);
             unlocking = entMan.EnsureComponent<XenoArtifactUnlockingComponent>(args.TargetEntity);
         }
-        else if (!unlocking.ArtifexiumApplied)
-        {
-            popupSys.PopupEntity(Loc.GetString("artifact-activation-artifexium"), args.TargetEntity, PopupType.Medium);
-        }
-
-        if (unlocking.ArtifexiumApplied)
-            return;
-
-        xenoArtifactSys.SetArtifexiumApplied((args.TargetEntity, unlocking), true);
     }
 
     protected override string ReagentEffectGuidebookText(IPrototypeManager prototype, IEntitySystemManager entSys)

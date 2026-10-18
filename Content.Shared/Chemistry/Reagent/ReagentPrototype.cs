@@ -76,6 +76,12 @@ namespace Content.Shared.Chemistry.Reagent
         public Color SubstanceColor { get; private set; } = Color.White;
 
         /// <summary>
+        /// Whether this reagent stands out (blood, slime).
+        /// </summary>
+        [DataField]
+        public bool Standsout;
+
+        /// <summary>
         ///     The specific heat of the reagent.
         ///     How much energy it takes to heat one unit of this reagent by one Kelvin.
         /// </summary>
