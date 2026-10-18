@@ -698,7 +698,12 @@
       - !type:EvenHealthChange
         damage:
           Brute: -2 #Mono -1.75 >> -2
-          Airloss: -1
+      # Triad: Nerf Polyp to be less effective than more specialized chems. Remove its bloodloss damage healing, and lower overdose threshold.
+          #Airloss: -1
+      - !type:HealthChange
+        damage:
+          types:
+            Asphyxiation: -1
       - !type:HealthChange
         conditions:
         - !type:OrganType # Goobstation - Yowie
@@ -917,17 +922,20 @@
         factor: -1
 
   # Should heal quite literally everything, use in very small amounts
-- type: reagent # Triad: Replaced Omnizine with OmnizineTriad, our own version of the chemical in our own namespace, in order to remove the current stockpiles most players have.
+  # Triad: Replaced Omnizine with OmnizineTriad, our own version of the chemical in our own namespace, in order to remove the current stockpiles most players have. Change name and description to show this isn't useful anymore.
+- type: reagent
   id: Omnizine
-  name: reagent-name-omnizine
+  #name: reagent-name-omnizine
+  name: reagent-name-omnizine-expired
   group: Medicine
-  desc: reagent-desc-omnizine
-  # Triad: Change physical description to indicate that this omni is no longer good for anything.
+  #desc: reagent-desc-omnizine
+  desc: reagent-desc-omnizine-expired
   #physicalDesc: reagent-physical-desc-soothing
   physicalDesc: reagent-physical-desc-inert
   # End Triad
   flavor: medicine
-  color: "#fcf7f9"
+  #color: "#fcf7f9"
+  color: "#210a3b" # Sorta anomalous goopy purple-black
   metabolisms:
     Medicine:
       effects:
@@ -937,13 +945,12 @@
           min: 0
           max: 100
         damage:
-          # Triad: Make those old stockpiles of omnizine not work anymore.
           #Burn: -1.5
           #Toxin: -1.5
           #Airloss: -1.5
-          Airloss: -0 # To prevent the prototype from just not loading
+          Poison: 3
           #Brute: -1.5
-          # End Triad
+  # End Triad
       - !type:HealthChange # Mono - Added overdose
         conditions:
         - !type:ReagentThreshold
