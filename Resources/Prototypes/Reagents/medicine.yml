@@ -710,7 +710,10 @@
           type: Yowie
           shouldHave: false
         - !type:ReagentThreshold
-          min: 30
+          # Triad: Reduce overdose in service to making other chems like Bic more useful.
+          #min: 30
+          min: 20
+          # End Triad
         damage:
           types:
             Asphyxiation: 3.5
@@ -931,8 +934,7 @@
   #desc: reagent-desc-omnizine
   desc: reagent-desc-omnizine-expired
   #physicalDesc: reagent-physical-desc-soothing
-  physicalDesc: reagent-physical-desc-inert
-  # End Triad
+  physicalDesc: reagent-physical-desc-anomalous
   flavor: medicine
   #color: "#fcf7f9"
   color: "#210a3b" # Sorta anomalous goopy purple-black
@@ -943,18 +945,19 @@
         conditions:
         - !type:ReagentThreshold
           min: 0
-          max: 100
+          #max: 100
+          max: 1 # Triad
         damage:
-          #Burn: -1.5
-          #Toxin: -1.5
-          #Airloss: -1.5
-          Poison: 3
-          #Brute: -1.5
-  # End Triad
+          Burn: -1.5
+          Toxin: -1.5
+          Airloss: -1.5
+          Brute: -1.5
       - !type:HealthChange # Mono - Added overdose
         conditions:
         - !type:ReagentThreshold
-          min: 100
+          #min: 100
+          min: 2 # Triad
+  # End Triad
         damage:
           groups:
             Burn: 1

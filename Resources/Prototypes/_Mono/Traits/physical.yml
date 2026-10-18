@@ -581,52 +581,53 @@
     - type: AlcoholTolerance
       visualScaleMultiplier: 0.35
 
-- type: trait
-  id: PlateletFactories
-  name: trait-platelet-factories-name
-  description: trait-platelet-factories-desc
-  category: Physical
-  cost: 6
-  conditions:
-  - !type:HasTraitCondition
-    trait: Hemophilia
-    invert: true
-  - !type:IsSpeciesCondition
-    species: IPC
-    invert: true
-  - !type:HasCompCondition
-    component: BorgChassis
-    invert: true
-  effects:
-  - !type:AddCompsEffect
-    components:
-      - type: PlateletFactories
-        intervalSeconds: 1
-        damagePerInterval:
-          groups:
-            Brute: -1.5
-            Burn: -2
-        critMultiplier: .25
-
-- type: trait
-  id: NaniteRepairDrones
-  name: trait-nanite-repair-drones-name
-  description: trait-nanite-repair-drones-desc
-  category: Physical
-  cost: 8
-  conditions:
-  - !type:IsSpeciesCondition
-    species: IPC
-  - !type:HasCompCondition
-    component: BorgChassis
-    invert: true
-  effects:
-    - !type:AddCompsEffect
-      components:
-        - type: PlateletFactories
-          intervalSeconds: 1
-          damagePerInterval:
-            groups:
-              Brute: -1.5
-              Burn: -2
-
+# Triad: Remove Platelet factories to avoid circumventing the medical system.
+#- type: trait
+#  id: PlateletFactories
+#  name: trait-platelet-factories-name
+#  description: trait-platelet-factories-desc
+#  category: Physical
+#  cost: 6
+#  conditions:
+#  - !type:HasTraitCondition
+#    trait: Hemophilia
+#    invert: true
+#  - !type:IsSpeciesCondition
+#    species: IPC
+#    invert: true
+#  - !type:HasCompCondition
+#    component: BorgChassis
+#    invert: true
+#  effects:
+#  - !type:AddCompsEffect
+#    components:
+#      - type: PlateletFactories
+#        intervalSeconds: 1
+#        damagePerInterval:
+#          groups:
+#            Brute: -1.5
+#            Burn: -2
+#        critMultiplier: .25
+#
+#- type: trait
+#  id: NaniteRepairDrones
+#  name: trait-nanite-repair-drones-name
+#  description: trait-nanite-repair-drones-desc
+#  category: Physical
+#  cost: 8
+#  conditions:
+#  - !type:IsSpeciesCondition
+#    species: IPC
+#  - !type:HasCompCondition
+#    component: BorgChassis
+#    invert: true
+#  effects:
+#    - !type:AddCompsEffect
+#      components:
+#        - type: PlateletFactories
+#          intervalSeconds: 1
+#          damagePerInterval:
+#            groups:
+#              Brute: -1.5
+#              Burn: -2
+# End Triad
