@@ -276,6 +276,7 @@
     tags:
     - Meat
     - Pizza
+    - ContainsOmnizine # Triad: Make food with Omnizine not grindable
 
 
 - type: entity
@@ -308,6 +309,7 @@
     - Meat
     - Pizza
     - Slice
+    - ContainsOmnizine # Triad: Make food with Omnizine not grindable
 # Tastes like crust, tomato, cheese, meat, laziness.
 
 - type: entity
@@ -495,6 +497,7 @@
     tags:
     - Meat
     - Pizza
+    - ContainsOmnizine # Triad: Make food with Omnizine not grindable
 
 - type: entity
   name: slice of Arnold's pizza

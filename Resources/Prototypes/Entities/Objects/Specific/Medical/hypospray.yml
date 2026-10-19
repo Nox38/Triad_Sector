@@ -503,7 +503,8 @@
   - type: StaticPrice
     price: 500
   - type: Tag
-    tags: []
+    tags:
+      - ContainsOmnizine # Triad: Make food with Omnizine not grindable
 
 - type: entity
   name: pen

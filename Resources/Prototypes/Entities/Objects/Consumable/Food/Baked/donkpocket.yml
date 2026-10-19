@@ -21,6 +21,7 @@
     tags:
     - DonkPocket
     - Meat
+    - ContainsOmnizine # Triad: Make food with Omnizine not grindable
 
 # Donkpocket
 
@@ -61,6 +62,11 @@
           Quantity: 8
         - ReagentId: OmnizineTriad # Triad: Replaced old Omnizine with our new version
           Quantity: 2
+  # Triad: Make food with Omnizine not grindable
+  - type: Tag
+    tags:
+    - ContainsOmnizine
+  # End Triad
 
 - type: entity
   name: dank-pocket

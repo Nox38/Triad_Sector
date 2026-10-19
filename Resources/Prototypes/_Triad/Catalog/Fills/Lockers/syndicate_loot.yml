@@ -82,9 +82,10 @@
     # Triad: Moved Omnizine from the common group to a new rare group to make it more difficult to find.
     # Rare Group
     - !type:GroupSelector
-      weight: 3
+      weight: 0.5
       children:
       - id: ChemistryBottleOmnizine
+      - id: VestineChemistryVial
     # End Triad
 
 - type: entityTable

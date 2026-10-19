@@ -824,6 +824,7 @@
   - type: Tag
     tags:
     - Meat
+    - ContainsOmnizine # Triad: Make food with Omnizine not grindable
 
 - type: entity
   name: steak
