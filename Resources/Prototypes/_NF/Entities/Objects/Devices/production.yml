@@ -141,18 +141,6 @@
       Steel: 5
 
 - type: entity
-  id: ThrusterNfsdMachineCircuitboard
-  parent: [BaseMachineCircuitboard, BaseClass2AShipContrabandSilent]
-  name: TDF thruster machine board # Triad - name
-  components:
-  - type: MachineBoard
-    prototype: ThrusterTdf # Triad - prototype
-    requirements:
-      Capacitor: 1
-    stackRequirements:
-      Steel: 5
-
-- type: entity
   id: ThrusterUSSPMachineCircuitboard
   parent: BaseMachineCircuitboard
   name: USSP thruster machine board
@@ -221,34 +209,6 @@
       Glass: 2
   - type: StaticPrice
     price: 20
-
-- type: entity
-  id: GyroscopeNfsdMachineCircuitboard
-  parent: BaseMachineCircuitboard
-  name: TDF gyroscope machine board # Triad - name
-  components:
-  - type: MachineBoard
-    prototype: GyroscopeTdf # Triad - prototype
-    requirements:
-      Manipulator: 2
-      Capacitor: 1
-    stackRequirements:
-      Glass: 2
-
-- type: entity
-  id: SmallGyroscopeNfsdMachineCircuitboard
-  parent: BaseMachineCircuitboard
-  name: small TDF gyroscope machine board # Triad - name
-  components:
-  - type: MachineBoard
-    prototype: SmallGyroscopeTdf # Triad - Prototype
-    requirements:
-      Manipulator: 2
-      Capacitor: 1
-    stackRequirements:
-      Glass: 2
-  - type: StaticPrice
-    price: 18 # 12.5<18
 
 - type: entity
   id: SmallGyroscopeMachineCircuitboard
