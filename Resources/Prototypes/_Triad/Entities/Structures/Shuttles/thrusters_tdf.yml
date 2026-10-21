@@ -41,7 +41,6 @@
     - On
     - Off
     - Toggle
-    id: Thruster
   - type: Thruster
     thrust: 410 # Same as bluespace-upgraded gyro
     baseThrust: 410
