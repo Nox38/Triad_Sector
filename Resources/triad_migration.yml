@@ -378,4 +378,7 @@ ClothingHeadHelmetAttachmentBlock: null
 # 2026-10-21
 DebugThrusterTdf: ThrusterTdf
 DebugGyroscopeTdf: GyroscopeTdf
+ThrusterNfsdMachineCircuitboard: null
+GyroscopeNfsdMachineCircuitboard: null
+SmallGyroscopeNfsdMachineCircuitboard: null
 
