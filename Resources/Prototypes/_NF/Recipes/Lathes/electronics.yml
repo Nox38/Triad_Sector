@@ -100,15 +100,13 @@
     Steel: 400
     Glass: 900
 
-# Triad: Removed TDF thruster circuit boards
-#- type: latheRecipe
-#  id: ThrusterNfsdMachineCircuitboard
-#  parent: BaseCircuitboardRecipe
-#  result: ThrusterNfsdMachineCircuitboard
-#  materials:
-#    Steel: 400
-#    Glass: 900
-# End Triad
+- type: latheRecipe
+  id: ThrusterNfsdMachineCircuitboard
+  parent: BaseCircuitboardRecipe
+  result: ThrusterNfsdMachineCircuitboard
+  materials:
+    Steel: 400
+    Glass: 900
 
 - type: latheRecipe
   id: ThrusterUSSPMachineCircuitboard
@@ -146,17 +144,15 @@
   parent: BaseCircuitboardRecipe
   result: SmallGyroscopeSecurityMachineCircuitboard
 
-# Triad: Removed TDF gyro machine boards
-#- type: latheRecipe
-#  id: GyroscopeNfsdMachineCircuitboard
-#  parent: BaseCircuitboardRecipe
-#  result: GyroscopeNfsdMachineCircuitboard
-#
-#- type: latheRecipe
-#  id: SmallGyroscopeNfsdMachineCircuitboard
-#  parent: BaseCircuitboardRecipe
-#  result: SmallGyroscopeNfsdMachineCircuitboard
-# End Triad
+- type: latheRecipe
+  id: GyroscopeNfsdMachineCircuitboard
+  parent: BaseCircuitboardRecipe
+  result: GyroscopeNfsdMachineCircuitboard
+
+- type: latheRecipe
+  id: SmallGyroscopeNfsdMachineCircuitboard
+  parent: BaseCircuitboardRecipe
+  result: SmallGyroscopeNfsdMachineCircuitboard
 
 - type: latheRecipe
   id: SmallGyroscopeMachineCircuitboard
