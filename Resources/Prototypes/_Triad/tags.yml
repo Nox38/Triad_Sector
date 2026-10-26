@@ -102,6 +102,6 @@
 - type: Tag
   id: SafetyDepositBox
 
-# Food with Omnizine, that we don't want to be grindable
+# Things we don't want you to recycle, for example food with Omnizine in it
 - type: Tag
-  id: ContainsOmnizine
+  id: Ungrindable
