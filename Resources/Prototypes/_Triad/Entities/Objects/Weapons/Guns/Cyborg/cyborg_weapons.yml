@@ -74,6 +74,7 @@
     sprite: Objects/Weapons/Guns/Battery/pulse_rifle.rsi
   - type: Gun # 70 DPS
     fireRate: 2
+    selectedMode: FullAuto
     availableModes:
     - FullAuto
     - SemiAuto
@@ -116,5 +117,13 @@
   - type: ItemToggleMeleeWeapon
     activatedDamage:
       types:
-        Slash: 60 # 20 more slash, 50 more structural than normal energy sword.
-        Structural: 100
+        Slash: 40
+        Structural: 100 # 50 more structural than normal energy sword.
+
+- type: entity # Default-on version for NPC borg
+  parent: EnergySwordBorgSol
+  id: EnergySwordBorgSolOn
+  suffix: Borg, On
+  components:
+  - type: ItemToggle
+    activated: true

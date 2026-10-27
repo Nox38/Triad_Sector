@@ -86,7 +86,7 @@
   - type: ItemBorgModule
     items:
     - EnergySwordBorgSol
-    - EnergyShield
+    - EnergyShieldBorgSol
     - JawsOfLife
 
 - type: entity
@@ -119,5 +119,5 @@
   components:
   - type: ItemBorgModule
     items:
-    - EnergySwordBorgSol
-    - EnergyShieldBorgOn
+    - EnergySwordBorgSolOn
+    - EnergyShieldBorgSolOn
