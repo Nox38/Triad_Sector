@@ -11,8 +11,8 @@
     layers:
     - state: icon
   - type: Gun # 152 DPS
-    minAngle: 27
-    maxAngle: 45
+    minAngle: 15
+    maxAngle: 25
     angleIncrease: 2
     angleDecay: 22
     fireRate: 9.5
@@ -127,3 +127,10 @@
   components:
   - type: ItemToggle
     activated: true
+
+# Not a weapon, but it's in the module, so...
+- type: entity
+  parent: HoloprojectorFieldTSF
+  id: HoloprojectorFieldBorgSol
+  name: integrated projector
+  description: Mounted in your left arm, it creates an impassable forcefield that won't let anything through.

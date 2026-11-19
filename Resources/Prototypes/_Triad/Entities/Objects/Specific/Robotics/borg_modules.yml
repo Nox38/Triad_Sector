@@ -97,7 +97,7 @@
     items:
     - WeaponBorgPulseRifleSol
     - WeaponBorgSmartLmgSol
-    - HoloprojectorField
+    - HoloprojectorFieldBorgSol
     - JawsOfLife
   - type: BorgModuleIcon
     icon: { sprite: _Mono/Interface/Action/actions_borg.rsi, state: tsfadvanced-weapon-module }
